@@ -5,12 +5,12 @@ import EventoStack from './EventoStack';
 // Componentes
 import EventosScreen from '../../Screens/Home';
 import EventoScreen from '../../Screens/Evento';
-import PerfilScreen from '../../Screens/Perfil';
+import PerfilScreen from '../../Screens/B2B/Perfil';
 
-import DisertantesScreen from '../../Screens/Disertantes';
-import InfoDisertantesScreen from '../../Screens/InfoDisertantes';
+import DisertantesScreen from '../../Screens/Disertantes/Disertantes';
+import InfoDisertantesScreen from '../../Screens/Disertantes/InfoDisertantes';
 
-import ExpocitoresScreen from '../../Screens/Expocitores';
+import ExpocitoresScreen from '../../Screens/Expocitores/Expocitores';
 
 import { Icon, IconElement, TopNavigation, TopNavigationAction, Text } from '@ui-kitten/components';
 

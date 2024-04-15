@@ -2,10 +2,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon, IconElement } from '@ui-kitten/components';
 
 import EventoScreen from '../../Screens/Evento';
-import TinderScreen from '../../Screens/Tinder';
-import ListaScreen from '../../Screens/Lista';
-import MatchesScreen from '../../Screens/Matches';
-import PerfilScreen from '../../Screens/Perfil';
+import TinderScreen from '../../Screens/B2B/Tinder';
+import ListaScreen from '../../Screens/B2B/Lista';
+import MatchesScreen from '../../Screens/B2B/Matches';
+import PerfilScreen from '../../Screens/B2B/Perfil';
 
 const Tab = createBottomTabNavigator();
 

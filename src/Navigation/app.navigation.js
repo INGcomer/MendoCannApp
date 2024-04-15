@@ -3,7 +3,7 @@ import { Header, createStackNavigator } from '@react-navigation/stack';
 // Componentes
 import HomeScreen from '../Screens/Home';
 // import EventoScreen from '../Screens/Home';
-import PerfilScreen from '../Screens/Perfil';
+import PerfilScreen from '../Screens/B2B/Perfil';
 
 import { Icon, IconElement, TopNavigation, TopNavigationAction, Text } from '@ui-kitten/components';
 

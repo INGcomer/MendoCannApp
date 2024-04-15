@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Card from '../Components/Card';
-import users from '../../assets/data/users';
+import Card from '../../Components/Card';
+import users from '../../../assets/data/users';
 
-import AnimatedStack from '../Components/AnimatedStack';
+import AnimatedStack from '../../Components/AnimatedStack';
 
 // import { GestureHandlerRootView } from 'react-native-gesture-handler';
 

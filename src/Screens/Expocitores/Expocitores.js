@@ -4,7 +4,7 @@ import { View, StyleSheet, Pressable, Image, FlatList } from 'react-native';
 // Kitten UI
 import { Text, Divider, Icon } from '@ui-kitten/components';
 // data
-import info from '../../assets/data/Expocitores/Expocitores'
+import info from '../../../assets/data/Expocitores/Expocitores'
 
 const ExpocitoresScreen = ({ navigation }) => {
     const Medicinal = info.filter((disertante) => disertante.esenario == 'medicinal')
