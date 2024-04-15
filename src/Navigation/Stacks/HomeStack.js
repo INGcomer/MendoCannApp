@@ -62,7 +62,12 @@ export default function HomeStack() {
         headerStyle: { backgroundColor: '#C0EA6A' },
       }}
     >
-      <Stack.Screen name="Eventos" options={{title: '',}} component={EventosScreen} />
+      <Stack.Screen 
+        name="Eventos" 
+        options={{headerShown: false}} 
+        component={EventosScreen} 
+      />
+
       <Stack.Screen name="EventoStack" component={EventoStack} />
       <Stack.Screen name="PerfilScreen" component={PerfilScreen} />
 

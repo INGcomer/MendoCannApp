@@ -1,10 +1,12 @@
 // React
 import React, { useContext } from 'react';
-import { View, StyleSheet, Button, TouchableHighlight, Pressable } from 'react-native';
+import { View, StyleSheet, Button, TouchableHighlight, Pressable, Image } from 'react-native';
 // Context
 import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
 import { Text, Divider, Icon } from '@ui-kitten/components';
+// img
+import Logo from '../../assets/Logos/Logo completo.png'
 
 const EventosScreen = ({ navigation }) => {
     const { Logout } = useContext(AuthContext)
@@ -13,6 +15,12 @@ const EventosScreen = ({ navigation }) => {
 
     return (
         <View style={styles.pageContainer}>
+            <View style={styles.fotoContainer}>
+                <Image
+                    source={Logo}
+                    style={styles.foto}
+                />
+            </View>
             <Pressable
                 onPress={() => navigation.navigate('EventoStack')}
                 style={({ pressed }) => [
@@ -93,15 +101,12 @@ const styles = StyleSheet.create({
     pageContainer: {
         height: "100%",
         justifyContent: 'center',
-        // alignItems: 'center',
-        // alignItems: 'flex-end',
         alignContent: 'flex-end',
         flexDirection: 'row',
         flexWrap: "wrap",
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
-        padding: '5%',
+        // padding: '5%',
         paddingBottom: "15%",
         gap: 25
     },
@@ -181,6 +186,22 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         tintColor: "#2A3330",
+    },
+    fotoContainer: {
+        height: 50,
+        width: 325,
+        // borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: 'black',
+    },
+    foto: {
+        height: 350,
+        width: 350,
+        // borderRadius: 30,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // backgroundColor: 'black',
     }
 });
 
