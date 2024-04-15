@@ -12,6 +12,8 @@ import InfoDisertantesScreen from '../../Screens/Disertantes/InfoDisertantes';
 
 import ExpocitoresScreen from '../../Screens/Expocitores/Expocitores';
 
+import CronogramaScreen from '../../Screens/Cronograma';
+
 import { Icon, IconElement, TopNavigation, TopNavigationAction, Text } from '@ui-kitten/components';
 
 const BackIcon = (props) => (
@@ -72,7 +74,7 @@ export default function HomeStack() {
       <Stack.Screen name="PerfilScreen" component={PerfilScreen} />
 
 
-      <Stack.Screen name="Cronograma" component={PerfilScreen} />
+      <Stack.Screen name="Cronograma" component={CronogramaScreen} />
       <Stack.Screen name="Mapa" component={PerfilScreen} />
 
       <Stack.Screen name="Expocitores" component={ExpocitoresScreen} />

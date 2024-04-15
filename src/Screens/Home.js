@@ -33,7 +33,7 @@ const EventosScreen = ({ navigation }) => {
             </Pressable>
             
             <Pressable
-                onPress={() => navigation.navigate('EventoStack')}
+                onPress={() => navigation.navigate('Cronograma')}
                 style={({ pressed }) => [
                     styles.HomeButton,
                     pressed && styles.HomeButton2
