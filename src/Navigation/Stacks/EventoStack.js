@@ -9,27 +9,28 @@ import PerfilScreen from '../../Screens/B2B/Perfil';
 
 const Tab = createBottomTabNavigator();
 
-const Home = (props) => ( <Icon {...props} name='home-outline' />);
-const Tinder = (props) => ( <Icon {...props} name='globe-outline' />);
-const Lista = (props) => ( <Icon {...props} name='list-outline' />);
-const Matchs = (props) => ( <Icon {...props} name='star-outline' />);
-const Peril = (props) => ( <Icon {...props} name='person-outline' />);
+// const Home = (props) => ( <Icon {...props} name='home-outline' />);
+// const Home = (props) => (  <Icon {...props} name='globe'/>);
+const Tinder = (props) => ( <Icon {...props} name='home' />);
+const Lista = (props) => ( <Icon {...props} name='list' />);
+const Matchs = (props) => ( <Icon {...props} name='star' />);
+const Peril = (props) => ( <Icon {...props} name='user' />);
 
 const BottomTabBar = ({ navigation, state }) => (
     <BottomNavigation
       selectedIndex={state.index}
       onSelect={index => navigation.navigate(state.routeNames[index])}>
-      <BottomNavigationTab title='EventoScreen' icon={Home}/>
-      <BottomNavigationTab title='TinderScreen' icon={Tinder}/>
-      <BottomNavigationTab title='ListaScreen' icon={Lista}/>
-      <BottomNavigationTab title='MatchesScreen' icon={Matchs}/>
-      <BottomNavigationTab title='PerfilScreen' icon={Peril}/>
+      {/* <BottomNavigationTab title='EventoScreen' icon={Home}/> */}
+      <BottomNavigationTab title='Home' icon={Tinder}/>
+      <BottomNavigationTab title='Lista de usuarios' icon={Lista}/>
+      <BottomNavigationTab title='Mis reuniones' icon={Matchs}/>
+      <BottomNavigationTab title='Perfil' icon={Peril}/>
     </BottomNavigation>
 );
 
 export default function EventoStack() {
     return (
-        <Tab.Navigator tabBar={props => <BottomTabBar {...props} />} initialRouteName='EventoScreen'
+        <Tab.Navigator tabBar={props => <BottomTabBar {...props} />} initialRouteName='TinderScreen'
         screenOptions={{
             headerShown: false
         }}>
@@ -39,7 +40,7 @@ export default function EventoStack() {
                 headerShown: false
             }}
         > */}
-            <Tab.Screen name="EventoScreen" component={EventoScreen} />
+            {/* <Tab.Screen name="EventoScreen" component={EventoScreen} /> */}
             <Tab.Screen name="TinderScreen" component={TinderScreen} />
             <Tab.Screen name="ListaScreen" component={ListaScreen} />
             <Tab.Screen name="MatchesScreen" component={MatchesScreen} />

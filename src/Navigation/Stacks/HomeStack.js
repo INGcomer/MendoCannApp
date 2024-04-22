@@ -89,7 +89,8 @@ export default function HomeStack() {
 
 
       <Stack.Screen name="Sponsors" component={PerfilScreen} />
-      <Stack.Screen name="B2B" component={PerfilScreen} />
+
+      <Stack.Screen name="B2B" component={EventoStack} />
     </Stack.Navigator>
   );
 }

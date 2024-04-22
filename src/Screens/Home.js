@@ -83,7 +83,7 @@ const EventosScreen = ({ navigation }) => {
                 <Text style={styles.HomeButtonText}>Sponsors</Text>
             </Pressable>
             <Pressable
-                onPress={() => navigation.navigate('EventoStack')}
+                onPress={() => navigation.navigate('B2B')}
                 style={({ pressed }) => [
                     styles.HomeButton,
                     pressed && styles.HomeButton2
