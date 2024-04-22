@@ -4,7 +4,7 @@ import { Header, createStackNavigator } from '@react-navigation/stack';
 import EventoStack from './EventoStack';
 // Componentes
 import EventosScreen from '../../Screens/Home';
-import EventoScreen from '../../Screens/Evento';
+import LogInScreen from '../../Screens/LogIn';
 import PerfilScreen from '../../Screens/B2B/Perfil';
 
 import DisertantesScreen from '../../Screens/Disertantes/Disertantes';
@@ -71,7 +71,7 @@ export default function HomeStack() {
       />
 
       <Stack.Screen name="EventoStack" component={EventoStack} />
-      <Stack.Screen name="PerfilScreen" component={PerfilScreen} />
+      <Stack.Screen name="login" component={LogInScreen} />
 
 
       <Stack.Screen name="Cronograma" component={CronogramaScreen} />

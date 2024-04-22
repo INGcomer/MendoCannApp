@@ -73,7 +73,7 @@ const EventosScreen = ({ navigation }) => {
                 <Text style={styles.HomeButtonText}>Disertantes</Text>
             </Pressable>
             <Pressable
-                onPress={() => navigation.navigate('EventoStack')}
+                onPress={() => navigation.navigate('login')}
                 style={({ pressed }) => [
                     styles.HomeButton,
                     pressed && styles.HomeButton2

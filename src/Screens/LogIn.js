@@ -14,21 +14,6 @@ import LOGO from '../../assets/images/logo 1.png';
 const LogInScreen = ({navigation}) => {
     const {Login} = useContext(AuthContext)
 
-    const [secureTextEntry, setSecureTextEntry] = useState(true);
-
-    const toggleSecureEntry = () => {
-        setSecureTextEntry(!secureTextEntry);
-    };
-
-    const renderIcon = (props) => (
-        <TouchableWithoutFeedback onPress={toggleSecureEntry}>
-            <Icon
-                {...props}
-                name={secureTextEntry ? 'eye-off' : 'eye'}
-            />
-        </TouchableWithoutFeedback>
-    );
-
     const {
         control,
         handleSubmit,
@@ -41,40 +26,39 @@ const LogInScreen = ({navigation}) => {
     })
 
     const onSubmit = (data) => {
-        console.log(data)
-        axios({
-            method: 'post',
-            url: 'http://192.168.1.36:3000/users/login',
-            data: data,
-            headers: {
-                "Accept": "application/json"
-            },
-        }).then(function (response) {
 
-            // Alert.alert('Genail', 'estas logueado');
+        navigation.navigate('B2B')
 
-            console.log(response.data)
+        // console.log(data)
+        // axios({
+        //     method: 'post',
+        //     url: 'http://192.168.1.36:3000/users/login',
+        //     data: data,
+        //     headers: {
+        //         "Accept": "application/json"
+        //     },
+        // }).then(function (response) {
 
-            Login(response.data.Token)
+        //     // Alert.alert('Genail', 'estas logueado');
 
-            // redirijo al usuario
-            // navigate('/' + forward_url.replace(/-/g, "/"))
+        //     console.log(response.data)
 
-        }).catch(function (error) {
+        //     Login(response.data.Token)
 
-            Alert.alert('pucha :(', 'hubo un error');
+        //     // redirijo al usuario
+        //     // navigation.navigate('B2B')
 
-            console.log(error);
-        });
+        // }).catch(function (error) {
+
+        //     Alert.alert('pucha :(', 'hubo un error');
+
+        //     console.log(error);
+        // });
     }
 
 
     return (
         <View style={styles.pageContainer}>
-            <Image
-                style={styles.tinyLogo}
-                source={LOGO}
-            />
 
             <Text category='h1'> Ingresar </Text>
 
@@ -85,7 +69,7 @@ const LogInScreen = ({navigation}) => {
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <Input
-                        placeholder='Email'
+                        placeholder='Codigo'
                         // value={value}
                         // onChangeText={nextValue => SetEmailValue(nextValue)}
 
@@ -99,40 +83,10 @@ const LogInScreen = ({navigation}) => {
                 )}
                 name="email"
             />
-            <Controller
-                control={control}
-                rules={{
-                    required: true,
-                }}
-                render={({ field: { onChange, onBlur, value } }) => (
-                    <Input
-                        placeholder='Contraseña'
-                        accessoryRight={renderIcon}
-                        secureTextEntry={secureTextEntry}
-                        // onChangeText={nextValue => SetContraValue(nextValue)}
-
-                        status={errors.Nombre ? "danger" : 'basic'}
-                        onBlur={onBlur}
-                        onChangeText={onChange}
-                        value={value}
-                        style={styles.Input}
-                    />
-                )}
-                name="password"
-            />
 
             <Button onPress={handleSubmit(onSubmit)}>
                 iniciar sesion
             </Button>
-
-            <View style={styles.buttonContainer}>
-                <Button appearance='ghost' onPress={() => navigation.navigate('SingIn/Datospersonales')}>
-                    Crear una cuenta
-                </Button>
-                <Button appearance='ghost' onPress={() => Linking.openURL('https://www.withsisa.com/forgotPassword')}>
-                    Olvide mi contraseña
-                </Button>
-            </View>
 
         </View>
     );
@@ -143,7 +97,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
-        backgroundColor: '#222B45',
+        backgroundColor: '#C0EA6A',
         padding: "10%",
         gap: 25,
     },

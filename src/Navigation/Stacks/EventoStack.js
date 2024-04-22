@@ -44,11 +44,12 @@ export default function EventoStack() {
                 headerShown: false
             }}
         > */}
-            {/* <Tab.Screen name="EventoScreen" component={EventoScreen} /> */}
             <Tab.Screen name="TinderScreen" component={TinderScreen} />
             <Tab.Screen name="ListaScreen" component={ListaScreen} />
             <Tab.Screen name="MatchesScreen" component={MatchesScreen} />
             <Tab.Screen name="PerfilScreen" component={PerfilScreen} />
+
+            {/* <Tab.Screen name="EventoScreen" component={EventoScreen} /> */}
         </Tab.Navigator>
     );
 }
