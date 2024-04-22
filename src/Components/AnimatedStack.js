@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, useWindowDimensions } from 'react-native';
 
+import { Pressable } from 'react-native';
+import { Text, Icon } from '@ui-kitten/components';
+
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -132,24 +135,58 @@ const AnimatedStack = props => {
                     </PanGestureHandler>
                 )}
             </View>
+            <View style={styles.Botones}>
+                    <Pressable
+                        onPress={() => {
+                            translateX.value = withSpring(
+                                hiddenTranslateX * Math.sign(-1),
+                                {},
+                                () => runOnJS(setCurrentIndex)(currentIndex + 1),
+                            );
+                            runOnJS(onSwipeLeft)(currentProfile)
+                        }}
+                        style={({ pressed }) => [
+                            styles.HomeButton,
+                            pressed && styles.HomeButton2
+                        ]}
+                    >
+                        <Icon name='thumbs-down' style={styles.icons} />
+                        <Text style={styles.HomeButtonText}>No me gusta</Text>
+                    </Pressable>
+                    <Pressable
+                        onPress={() => {
+                            translateX.value = withSpring(
+                                hiddenTranslateX * Math.sign(1),
+                                {},
+                                () => runOnJS(setCurrentIndex)(currentIndex + 1),
+                            );
+                            runOnJS(onSwipeRight)(currentProfile)
+                        }}
+                        style={({ pressed }) => [
+                            styles.HomeButton,
+                            pressed && styles.HomeButton2
+                        ]}
+                    >
+                        <Icon name='thumbs-up' style={styles.icons} />
+                        <Text style={styles.HomeButtonText}>Me gusta</Text>
+                    </Pressable>
+                </View>
         </GestureHandlerRootView>
     );
 };
 
 const styles = StyleSheet.create({
     root: {
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        flex: 1,
-        width: '100%',
-        // backgroundColor: '#091C7A'
+        height: '85%',
+        margin: 0,
     },
     animatedCard: {
         width: '100%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: '#091C7A'
     },
     nextCardContainer: {
         ...StyleSheet.absoluteFillObject,
@@ -157,15 +194,72 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
+        // height: '70%'
+
+        top: 0
 
     },
     like: {
-        width: 150,
-        height: 150,
+        width: 200,
+        height: 200,
         position: 'absolute',
-        top: 10,
+        top: 100,
         zIndex: 1,
         // elevation: 1,
+    },
+
+
+
+    Botones: {
+        height: 100,
+        paddingLeft: 25,
+        paddingRight: 25,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        width: '100%',
+        // backgroundColor: 'red',
+    },
+    HomeButton: {
+        height: 100,
+        width: 100,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        shadowColor: "#2A3330",
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 11.27,
+        elevation: 20
+    },
+    HomeButton2: {
+        height: 100,
+        width: 100,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        shadowColor: "#2A3330",
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 11.27,
+        elevation: 2
+    },
+    HomeButtonText: {
+        color: '#2A3330',
+        fontSize: 15
+    },
+    icons: {
+        height: 25,
+        width: 25,
+        tintColor: "#2A3330",
     },
 });
 

@@ -36,11 +36,9 @@ export default function Card(props) {
 const styles = StyleSheet.create({
     card: {
         // width: '90%',
-        height: '60%',
+        height: '90%',
         margin: '5%',
         borderRadius: 10,
-        backgroundColor: '#fefefe',
-
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -56,7 +54,8 @@ const styles = StyleSheet.create({
     User: {
         height: 'fit-content',
         width: '100%',
-        backgroundColor: '#101426',
+        // backgroundColor: '#101426',
+        backgroundColor: '#ffffff',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -79,17 +78,18 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 30,
-        color: 'white',
+        color: '#2A3330',
         fontWeight: 'bold',
     },
     bio: {
         fontSize: 18,
-        color: 'white',
+        color: '#2A3330',
         lineHeight: 25,
     },
     empresa: {
         height: '100%',
-        backgroundColor: '#8F9BB3',
+        // backgroundColor: '#8F9BB3',
+        backgroundColor: '#ffffff',
         padding: '5%'
     },
 });
