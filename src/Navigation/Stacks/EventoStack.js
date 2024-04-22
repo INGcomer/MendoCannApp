@@ -1,6 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon, IconElement } from '@ui-kitten/components';
 
+import { View, StyleSheet, useWindowDimensions } from 'react-native';
+
 import EventoScreen from '../../Screens/Evento';
 import TinderScreen from '../../Screens/B2B/Tinder';
 import ListaScreen from '../../Screens/B2B/Lista';
@@ -19,7 +21,9 @@ const Peril = (props) => ( <Icon {...props} name='user' />);
 const BottomTabBar = ({ navigation, state }) => (
     <BottomNavigation
       selectedIndex={state.index}
-      onSelect={index => navigation.navigate(state.routeNames[index])}>
+      onSelect={index => navigation.navigate(state.routeNames[index])}
+      style= {styles.navigation}
+    >
       {/* <BottomNavigationTab title='EventoScreen' icon={Home}/> */}
       <BottomNavigationTab title='Home' icon={Tinder}/>
       <BottomNavigationTab title='Lista de usuarios' icon={Lista}/>
@@ -48,3 +52,10 @@ export default function EventoStack() {
         </Tab.Navigator>
     );
 }
+
+
+const styles = StyleSheet.create({
+    navigation: {
+        backgroundColor: '#FFFFFF', 
+    }
+})
