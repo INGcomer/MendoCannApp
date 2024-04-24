@@ -6,11 +6,37 @@ import users from '../../../assets/data/users';
 
 import AnimatedStack from '../../Components/AnimatedStack';
 
-// import { GestureHandlerRootView } from 'react-native-gesture-handler';
+// Axios
+import axios from 'axios';
+
 
 const TinderScreen = () => {
     const onSwipeLeft = user => {
         console.warn('swipe left', user.Usuario.name);
+
+        const data = {
+            codigo: 'kk',
+            like: false,
+            codigoLike: 'kk2'
+        }
+
+        axios({
+            method: 'post',
+            url: 'http://192.168.0.14:3000/MatchAle/saveLike',
+            data: data,
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
+
+            console.log(response.data)
+
+        }).catch(function (error) {
+
+            Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
+
+            console.log(error);
+        });
     };
 
     const onSwipeRight = user => {

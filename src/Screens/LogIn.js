@@ -20,40 +20,39 @@ const LogInScreen = ({navigation}) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            email: "",
-            password: '',
+            codigo: "",
         },
     })
 
     const onSubmit = (data) => {
 
-        navigation.navigate('B2B')
+        // navigation.navigate('B2B')
 
-        // console.log(data)
-        // axios({
-        //     method: 'post',
-        //     url: 'http://192.168.1.36:3000/users/login',
-        //     data: data,
-        //     headers: {
-        //         "Accept": "application/json"
-        //     },
-        // }).then(function (response) {
+        console.log(data)
+        axios({
+            method: 'post',
+            url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
+            data: data,
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
 
-        //     // Alert.alert('Genail', 'estas logueado');
+            // Alert.alert('Genail', 'estas logueado');
 
-        //     console.log(response.data)
+            console.log(response.data.codigo)
 
-        //     Login(response.data.Token)
+            Login(response.data.codigo)
 
-        //     // redirijo al usuario
-        //     // navigation.navigate('B2B')
+            // redirijo al usuario
+            navigation.navigate('B2B')
 
-        // }).catch(function (error) {
+        }).catch(function (error) {
 
-        //     Alert.alert('pucha :(', 'hubo un error');
+            Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
 
-        //     console.log(error);
-        // });
+            console.log(error);
+        });
     }
 
 
@@ -81,7 +80,7 @@ const LogInScreen = ({navigation}) => {
                         style={styles.Input}
                     />
                 )}
-                name="email"
+                name="codigo"
             />
 
             <Button onPress={handleSubmit(onSubmit)}>
