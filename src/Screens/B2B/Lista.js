@@ -1,12 +1,14 @@
 // React
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, Pressable, Image, FlatList } from 'react-native';
 // Kitten UI
-import { Text, Divider, Icon } from '@ui-kitten/components';
-// data
-import info from '../../../assets/data/Disertantes/Disertantes'
+import { Text, Icon } from '@ui-kitten/components';
+// context
+import { UsersDataContext } from '../../Navigation/Stacks/EventoStack';
 
 const ListaScreen = ({ navigation }) => {
+
+    const [Usuarios, SetUsuarios] = useContext(UsersDataContext);
 
 
     return (
@@ -15,7 +17,7 @@ const ListaScreen = ({ navigation }) => {
 
             <FlatList
                 style={styles.lista}
-                data={info}
+                data={Usuarios}
                 renderItem={({ item }) => <BotonDisertante data={item} navigation={navigation} />}
             />
 
@@ -28,32 +30,35 @@ const BotonDisertante = (({ data, navigation }) => {
     return (
         <View style={styles.Disertante} >
 
-            <View style={styles.container}> 
+            <View style={styles.container}>
                 <View style={styles.fotoContainer}>
                     <Image
-                        source={data.foto}
+                        source={{ uri: data.usuario.foto }}
                         style={styles.foto}
                     />
                 </View>
 
                 <View style={styles.textoBox}>
                     <Text style={[styles.texto, styles.nombre]}>
-                        {data.nombre}
+                        {data.usuario.nombre}
+                    </Text>
+                    <Text>
+                        <Text style={[styles.texto, styles.conferencia]}>
+                            Cargo:
+                        </Text>
+                        <Text style={[styles.texto, styles.titulo]}>
+                            {data.usuario.ron_empresa}
+                        </Text>
                     </Text>
                     <Text>
                         <Text style={[styles.texto, styles.conferencia]}>
                             Empresa:
                         </Text>
                         <Text style={[styles.texto, styles.titulo]}>
-                            {data.esenario}
+                            {data.empresa.nombre}
                         </Text>
                     </Text>
-                    <Text style={[styles.texto, styles.conferencia]}>
-                        Cargo:
-                    </Text>
-                    <Text style={[styles.texto, styles.titulo]}>
-                        {data.Conferencias}
-                    </Text>
+
                 </View>
             </View>
 

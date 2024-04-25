@@ -1,16 +1,37 @@
-import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
-import { Text, Icon } from '@ui-kitten/components';
+// React
+import { useEffect, useContext } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Text } from '@ui-kitten/components';
+// components
 import Card from '../../Components/Card';
-import users from '../../../assets/data/users';
-
 import AnimatedStack from '../../Components/AnimatedStack';
-
 // Axios
 import axios from 'axios';
+// context
+import { UsersDataContext } from '../../Navigation/Stacks/EventoStack';
 
 
 const TinderScreen = () => {
+
+    const [Usuarios, SetUsuarios] = useContext(UsersDataContext);
+
+    useEffect(() => {
+        axios({
+            method: 'get',
+            url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
+            console.log(response.data)
+    
+            SetUsuarios(response.data)
+    
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }, []);
+
     const onSwipeLeft = user => {
         console.warn('swipe left', user.Usuario.name);
 
@@ -45,37 +66,18 @@ const TinderScreen = () => {
 
     return (
         <View style={styles.pageContainer}>
-            <AnimatedStack
-                data={users}
-                renderItem={({ item }) => <Card user={item} />}
-                onSwipeLeft={onSwipeLeft}
-                onSwipeRight={onSwipeRight}
-            />
-
-            {/* <View style={styles.Botones}>
-                <Pressable
-                    onPress={() => onSwipeLeft()}
-                    style={({ pressed }) => [
-                        styles.HomeButton,
-                        pressed && styles.HomeButton2
-                    ]}
-                >
-                    <Icon name='thumbs-down' style={styles.icons} />
-                    <Text style={styles.HomeButtonText}>No me gusta</Text>
-                </Pressable>
-                <Pressable
-                    // onPress={() => navigation.navigate('B2B')}
-                    style={({ pressed }) => [
-                        styles.HomeButton,
-                        pressed && styles.HomeButton2
-                    ]}
-                >
-                    <Icon name='thumbs-up' style={styles.icons} />
-                    <Text style={styles.HomeButtonText}>Me gusta</Text>
-                </Pressable>
-
-
-            </View> */}
+            {Usuarios ?
+                <AnimatedStack
+                    data={Usuarios}
+                    renderItem={({ item }) => <Card user={item} />}
+                    onSwipeLeft={onSwipeLeft}
+                    onSwipeRight={onSwipeRight}
+                />
+                :
+                <View style={styles.LoadingContainer}>
+                    <Text style={styles.LoadingText}> Cargando . . . </Text>
+                </View>
+            }
         </View>
     );
 };
@@ -86,55 +88,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#C0EA6A',
         height: '100%',
     },
-    Botones: {
-        height: 300,
-        flexDirection: 'row',
+    LoadingContainer: {
+        height: '100%',
+        width: '100%',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        margin: 0,
-        // marginBottom: 200,
+        justifyContent: 'center'
     },
-    HomeButton: {
-        height: 150,
-        width: 150,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        shadowColor: "#2A3330",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 11.27,
-        elevation: 20
-    },
-    HomeButton2: {
-        height: 150,
-        width: 150,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        shadowColor: "#2A3330",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 11.27,
-        elevation: 2
-    },
-    HomeButtonText: {
-        color: '#2A3330',
-        fontSize: 20
-    },
-    icons: {
-        height: 50,
-        width: 50,
-        tintColor: "#2A3330",
-    },
+    LoadingText: {
+        fontSize: 50,
+        fontWeight: 700
+    }
 });
 
 export default TinderScreen;

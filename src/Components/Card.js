@@ -3,17 +3,18 @@ import { Image, View, StyleSheet } from 'react-native';
 import { Text } from '@ui-kitten/components';
 
 export default function Card(props) {
-    const { Usuario, Empresa } = props.user;
+    const { usuario, empresa } = props.user;
     return (
         <View style={styles.card}>
             <View style={styles.User}>
                 <View style={styles.imageContainer}>
-                    <Image source={{ uri: Usuario.image }} style={styles.image} />
+                    <Image source={{ uri: usuario.foto }} style={styles.image} />
+
                 </View>
-                <View>
-                    <Text style={styles.name}>{Usuario.name}</Text>
-                    <Text style={styles.bio}>{Empresa.puesto}</Text>
-                    <Text style={styles.bio}>en {Empresa.nombre}</Text>
+                <View style={styles.nombreContainer}>
+                    <Text style={styles.name}>{usuario.nombre}</Text>
+                    <Text style={styles.bio}>{usuario.ron_empresa}</Text>
+                    <Text style={styles.bio}>en {empresa.nombre}</Text>
                 </View>
             </View>
 
@@ -21,14 +22,15 @@ export default function Card(props) {
 
             <View style={styles.empresa}>
                 <View style={styles.logoContainer}>
-                    <Image source={{ uri: Empresa.logo }} style={styles.image} />
+                    {empresa.logo ? <Image source={{ uri: empresa.logo }} style={styles.image} /> : null }
+                    
                 </View>
                 <View>
-                    <Text style={styles.name}>{Empresa.nombre}</Text>
-                    <Text style={styles.bio}>{Empresa.tipo}</Text>
-                    {/* <Text style={styles.bio}>en {Empresa.nombre}</Text> */}
+                    <Text style={styles.name}>{empresa.nombre}</Text>
+                    <Text style={styles.bio}>{empresa.rubro}</Text>
                 </View>
             </View>
+
         </View>
     )
 }
@@ -59,7 +61,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '5%'
+        padding: '5%',
+    },
+    nombreContainer: {
+        width: '70%',
+        alignItems: 'center',
     },
     imageContainer: {
         width: 100,
@@ -72,7 +78,7 @@ const styles = StyleSheet.create({
         height: '50%',
     },
     image: {
-        width: 'fit-content',
+        width: 'auto',
         height: '100%',
         objectFit: 'contain',
     },
