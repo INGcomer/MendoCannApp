@@ -2,26 +2,26 @@
 import {createContext, useState, useEffect} from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const SecionContext = createContext();
+export const AuthContext = createContext();
 
-export const SecionProvider = ({children}) => {
+export const AuthProvider = ({children}) => {
     const [IsLoading, SetIsLoading] = useState(true)
-    const [UserData, SetUserData] = useState(null)
+    const [UserToken, SetUserToken] = useState(null)
 
-    const Login = (data) => {
+    const Login = (Token) => {
         SetIsLoading(true);
 
-        SetUserData(data);
-        AsyncStorage.setItem('UserData', data);
+        SetUserToken(Token);
+        AsyncStorage.setItem('UserToken', Token);
 
         SetIsLoading(false);
     };
 
-    const Logout = () => {
+    const Logout = (navigation) => {
         SetIsLoading(true);
 
-        SetUserData(null);
-        AsyncStorage.removeItem('UserData')
+        SetUserToken(null);
+        AsyncStorage.removeItem('UserToken')
 
         SetIsLoading(false);
     }
@@ -30,8 +30,8 @@ export const SecionProvider = ({children}) => {
         try {
             SetIsLoading(true);
 
-            let userToken = await AsyncStorage.getItem('UserData');
-            SetUserData(userToken);
+            let userToken = await AsyncStorage.getItem('UserToken');
+            SetUserToken(userToken);
 
             SetIsLoading(false);
         } catch (e) {
@@ -44,8 +44,8 @@ export const SecionProvider = ({children}) => {
     }, [AsyncStorage])
 
     return (
-        <SecionContext.Provider value={{Login, Logout, IsLoading, UserData}}>
+        <AuthContext.Provider value={{Login, Logout, IsLoading, UserToken}}>
             {children}
-        </SecionContext.Provider>
+        </AuthContext.Provider>
     )
 }

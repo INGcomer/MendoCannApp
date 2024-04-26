@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet, Button, TouchableHighlight, Pressable, Image } from 'react-native';
 // Context
-import { AuthContext } from '../Context/AuthContext';
+import { AuthContext } from '../Context/AuthContextOld';
 // Kitten UI
 import { Text, Divider, Icon } from '@ui-kitten/components';
 // img

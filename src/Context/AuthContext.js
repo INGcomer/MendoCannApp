@@ -12,36 +12,36 @@ export const AuthProvider = ({children}) => {
         SetIsLoading(true);
 
         SetUserToken(Token);
-        AsyncStorage.setItem('UserToken', Token);
+        // AsyncStorage.setItem('UserToken', Token);
 
         SetIsLoading(false);
     };
 
-    const Logout = (navigation) => {
-        SetIsLoading(true);
+    // const Logout = (navigation) => {
+    //     SetIsLoading(true);
 
-        SetUserToken(null);
-        AsyncStorage.removeItem('UserToken')
+    //     SetUserToken(null);
+    //     AsyncStorage.removeItem('UserToken')
 
-        SetIsLoading(false);
-    }
+    //     SetIsLoading(false);
+    // }
 
-    const IsLoggedIn = async () => {
-        try {
-            SetIsLoading(true);
+    // const IsLoggedIn = async () => {
+    //     try {
+    //         SetIsLoading(true);
 
-            let userToken = await AsyncStorage.getItem('UserToken');
-            SetUserToken(userToken);
+    //         let userToken = await AsyncStorage.getItem('UserToken');
+    //         SetUserToken(userToken);
 
-            SetIsLoading(false);
-        } catch (e) {
-            console.log('hubo un error', {e})
-        }
-    };
+    //         SetIsLoading(false);
+    //     } catch (e) {
+    //         console.log('hubo un error', {e})
+    //     }
+    // };
 
-    useEffect(() => {
-        IsLoggedIn();
-    }, [AsyncStorage])
+    // useEffect(() => {
+    //     IsLoggedIn();
+    // }, [AsyncStorage])
 
     return (
         <AuthContext.Provider value={{Login, Logout, IsLoading, UserToken}}>

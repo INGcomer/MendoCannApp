@@ -8,7 +8,7 @@ import { ApplicationProvider, Layout, Text, IconRegistry } from '@ui-kitten/comp
 import { FeatherIconsPack } from './src/Components/feather-icons';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 // Contexts
-import { AuthProvider } from './src/Context/AuthContext';
+import { AuthProvider } from './src/Context/AuthContextOld';
 // Navigation
 import AppNavigation from './src/Navigation/app.navigation';
 // home stack
