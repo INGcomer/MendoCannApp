@@ -8,28 +8,29 @@ import AnimatedStack from '../../Components/AnimatedStack';
 // Axios
 import axios from 'axios';
 // context
-import { UsersDataContext } from '../../Navigation/Stacks/EventoStack';
+import { AllUsersContext } from '../../Context/AllUsersContext';
 
 
 const TinderScreen = () => {
-
-    const [Usuarios, SetUsuarios] = useContext(UsersDataContext);
+    const {AllUsersData, SetAllUsersData} = useContext(AllUsersContext);
 
     useEffect(() => {
-        axios({
-            method: 'get',
-            url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
-            headers: {
-                "Accept": "application/json"
-            },
-        }).then(function (response) {
-            console.log(response.data)
-    
-            SetUsuarios(response.data)
-    
-        }).catch(function (error) {
-            console.log(error);
-        });
+        if (!AllUsersData) {
+            axios({
+                method: 'get',
+                url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+                headers: {
+                    "Accept": "application/json"
+                },
+            }).then(function (response) {
+                console.log(response.data)
+        
+                SetAllUsersData(response.data)
+        
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     }, []);
 
     const onSwipeLeft = user => {
@@ -66,9 +67,9 @@ const TinderScreen = () => {
 
     return (
         <View style={styles.pageContainer}>
-            {Usuarios ?
+            {AllUsersData ?
                 <AnimatedStack
-                    data={Usuarios}
+                    data={AllUsersData}
                     renderItem={({ item }) => <Card user={item} />}
                     onSwipeLeft={onSwipeLeft}
                     onSwipeRight={onSwipeRight}

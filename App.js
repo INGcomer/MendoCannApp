@@ -9,6 +9,7 @@ import { FeatherIconsPack } from './src/Components/feather-icons';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 // Contexts
 import { AuthProvider } from './src/Context/AuthContext';
+import { AllUsersProvider } from './src/Context/AllUsersContext';
 // Navigation
 import AppNavigation from './src/Navigation/app.navigation';
 // home stack
@@ -16,14 +17,16 @@ import HomeStack from './src/Navigation/Stacks/HomeStack';
 
 export default () => (
   <AuthProvider>
-    <NavigationContainer>
-      {/* <IconRegistry icons={EvaIconsPack} /> */}
-      <IconRegistry icons={FeatherIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.dark}>
+    <AllUsersProvider>
+      <NavigationContainer>
+        {/* <IconRegistry icons={EvaIconsPack} /> */}
+        <IconRegistry icons={FeatherIconsPack} />
+        <ApplicationProvider {...eva} theme={eva.dark}>
 
-        <HomeStack />
+          <HomeStack />
 
-      </ApplicationProvider>
-    </NavigationContainer>
+        </ApplicationProvider>
+      </NavigationContainer>
+    </AllUsersProvider>
   </AuthProvider >
 );

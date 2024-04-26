@@ -4,12 +4,10 @@ import { View, StyleSheet, Pressable, Image, FlatList } from 'react-native';
 // Kitten UI
 import { Text, Icon } from '@ui-kitten/components';
 // context
-import { UsersDataContext } from '../../Navigation/Stacks/EventoStack';
+import { AllUsersContext } from '../../Context/AllUsersContext';
 
 const ListaScreen = ({ navigation }) => {
-
-    const [Usuarios, SetUsuarios] = useContext(UsersDataContext);
-
+    const {AllUsersData} = useContext(AllUsersContext);
 
     return (
         <View style={styles.pageContainer}>
@@ -17,7 +15,8 @@ const ListaScreen = ({ navigation }) => {
 
             <FlatList
                 style={styles.lista}
-                data={Usuarios}
+                // data={Usuarios}
+                data={AllUsersData}
                 renderItem={({ item }) => <BotonDisertante data={item} navigation={navigation} />}
             />
 

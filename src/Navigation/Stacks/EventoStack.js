@@ -1,5 +1,4 @@
 // React
-import { useState, createContext } from 'react';
 import { StyleSheet } from 'react-native';
 // kitten ui
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,8 +10,6 @@ import ListaScreen from '../../Screens/B2B/Lista';
 import MatchesScreen from '../../Screens/B2B/Matches';
 import PerfilScreen from '../../Screens/B2B/Perfil';
 
-// creo el contexto
-export const UsersDataContext = createContext()
 // creo el tab navigator
 const Tab = createBottomTabNavigator();
 
@@ -35,10 +32,8 @@ const BottomTabBar = ({ navigation, state }) => (
 );
 
 export default function EventoStack() {
-    const [Usuarios, SetUsuarios] = useState();
 
     return (
-        <UsersDataContext.Provider value={[Usuarios, SetUsuarios]}>
             <Tab.Navigator tabBar={props => <BottomTabBar {...props} />} initialRouteName='TinderScreen'
                 screenOptions={{
                     headerShown: false
@@ -50,7 +45,6 @@ export default function EventoStack() {
                 <Tab.Screen name="PerfilScreen" component={PerfilScreen} />
 
             </Tab.Navigator>
-        </UsersDataContext.Provider>
     );
 }
 
