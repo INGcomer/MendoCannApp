@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 import { Text } from '@ui-kitten/components';
 
-import img from '../../../assets/images/b2b/662978e073035617634b34b7.jpeg'
+// import img from '../../../assets/images/b2b/662978e073035617634b34b7.jpeg'
 
 
 const PerfilScreen = () => {
@@ -10,7 +10,7 @@ const PerfilScreen = () => {
         <View>
             {/* <Text category='h1'> PerfilScreen </Text> */}
 
-            <Image source={ require("../../../assets/images/b2b/662978e073035617634b34b7.jpeg") } style={styles.image} />
+            {/* <Image source={ require("../../../assets/images/b2b/662978e073035617634b34b7.jpeg") } style={styles.image} /> */}
             {/* <Image source={{ uri: img }} style={styles.image} /> */}
         </View>
     )
