@@ -3,7 +3,7 @@ import { useState, useContext } from 'react';
 import { useForm, Controller } from "react-hook-form"
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking, Alert } from 'react-native';
 // Context
-import { AuthContext } from '../Context/AuthContextOld';
+import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
 import { Icon, Input, Text, Button } from '@ui-kitten/components';
 // Axios
@@ -42,7 +42,7 @@ const LogInScreen = ({navigation}) => {
 
             console.log(response.data.codigo)
 
-            Login(response.data)
+            Login(response.data.codigo)
 
             // redirijo al usuario
             navigation.navigate('B2B')

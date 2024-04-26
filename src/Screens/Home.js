@@ -2,14 +2,14 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet, Button, TouchableHighlight, Pressable, Image } from 'react-native';
 // Context
-import { AuthContext } from '../Context/AuthContextOld';
+import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
 import { Text, Divider, Icon } from '@ui-kitten/components';
 // img
 import Logo from '../../assets/Logos/Logo completo.png'
 
 const EventosScreen = ({ navigation }) => {
-    const { Logout } = useContext(AuthContext)
+    const { UserToken } = useContext(AuthContext)
 
     const [value, setValue] = React.useState('');
 
@@ -83,7 +83,13 @@ const EventosScreen = ({ navigation }) => {
                 <Text style={styles.HomeButtonText}>Sponsors</Text>
             </Pressable>
             <Pressable
-                onPress={() => navigation.navigate('B2B')}
+                onPress={() => {
+                    if (UserToken) {
+                        navigation.navigate('B2B')
+                    } else {
+                        navigation.navigate('login')
+                    }
+                }}
                 style={({ pressed }) => [
                     styles.HomeButton,
                     pressed && styles.HomeButton2
