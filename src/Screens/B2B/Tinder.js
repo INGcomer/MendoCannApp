@@ -23,7 +23,7 @@ const TinderScreen = () => {
                     "Accept": "application/json"
                 },
             }).then(function (response) {
-                console.log(response.data)
+                // console.log(response.data)
         
                 SetAllUsersData(response.data)
         
