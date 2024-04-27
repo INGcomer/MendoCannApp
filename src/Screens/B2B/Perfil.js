@@ -1,6 +1,6 @@
 // React
 import { useEffect, useContext, useState } from 'react';
-import { Image, View, StyleSheet, Alert } from 'react-native';
+import { Image, View, StyleSheet, Alert, Pressable } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // Axios
 import axios from 'axios';
@@ -8,8 +8,8 @@ import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
 
 
-const PerfilScreen = () => {
-    const { UserToken } = useContext(AuthContext)
+const PerfilScreen = ({navigation}) => {
+    const { UserToken, Logout } = useContext(AuthContext)
 
     const [UserData, SetUserData] = useState();
 
@@ -41,7 +41,7 @@ const PerfilScreen = () => {
         <View style={styles.pageContainer}>
 
             {UserData ?
-                <DataUsuario data={UserData} />
+                <DataUsuario data={UserData} Logout={Logout} navigation={navigation}/>
                 :
                 <View style={styles.LoadingContainer}>
                     <Text style={styles.LoadingText}> Cargando . . . </Text>
@@ -53,12 +53,12 @@ const PerfilScreen = () => {
     )
 }
 
-const DataUsuario = ({ data }) => {
+const DataUsuario = ({ data, Logout, navigation }) => {
     return (
         <>
             <View style={styles.fotoContainer}>
                 <Image
-                    source={{ uri: data.usuario.foto }}
+                    source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
                     style={styles.foto}
                 />
             </View>
@@ -66,6 +66,18 @@ const DataUsuario = ({ data }) => {
             <Text category='h1' style={styles.nombre}> {data.usuario.nombre} </Text>
 
             <Text category='h4' style={styles.nombre}> {data.usuario.ron_empresa} en {data.empresa.nombre} </Text>
+
+            <Pressable
+                onPress={() => {Logout(), navigation.navigate('Eventos')}}
+                style={({ pressed }) => [
+                    styles.HomeButton,
+                    pressed && styles.HomeButton2
+                ]}
+            >
+
+                <Text style={styles.CerrarCecion}> Cerrar cecion </Text>
+ 
+            </Pressable>
 
 
         </>
@@ -83,6 +95,9 @@ const styles = StyleSheet.create({
     },
     nombre: {
         marginTop: 25,
+        color: 'black'
+    },
+    CerrarCecion: {
         color: 'black'
     },
     descripcion: {
@@ -145,7 +160,26 @@ const styles = StyleSheet.create({
     LoadingText: {
         fontSize: 50,
         fontWeight: 700
-    }
+    },
+    HomeButton: {
+        height: 50,
+        width: 150,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        shadowColor: "#2A3330",
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 11.27,
+        elevation: 20
+    },
+    HomeButton2: {
+        elevation: 2
+    },
 });
 
 

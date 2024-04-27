@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) => {
         SetIsLoading(false);
     };
 
-    const Logout = (navigation) => {
+    const Logout = () => {
         SetIsLoading(true);
 
         SetUserToken(null);
