@@ -27,12 +27,13 @@ const TinderScreen = () => {
             }).then(function (response) {
 
 
+                let userData = null
+
                 // busco y guardo lainformacion de usuario
                 for (let index = 0; index < response.data.length; index++) {
                     if (response.data[index].codigo == UserToken) {
-                        const userData = response.data[index]
-
-                        response.data.splice(index, 1);
+                        userData = response.data[index]
+                        // response.data.splice(index, 1);
 
                         break
                     }
@@ -77,35 +78,35 @@ const TinderScreen = () => {
     }, []);
 
     const onSwipeLeft = user => {
-        const data = {
-            codigo: UserToken,
-            like: false,
-            codigoLike: user.codigo,
-            nombreLike: user.usuario.nombre,
-            cargoLike: user.usuario.ron_empresa,
-            empresaLike: user.empresa.nombre,
-            fotoLike: user.usuario.foto
-        }
+        // const data = {
+        //     codigo: UserToken,
+        //     like: false,
+        //     codigoLike: user.codigo,
+        //     nombreLike: user.usuario.nombre,
+        //     cargoLike: user.usuario.ron_empresa,
+        //     empresaLike: user.empresa.nombre,
+        //     fotoLike: user.usuario.foto
+        // }
 
-        console.log(data)
+        // console.log(data)
 
-        axios({
-            method: 'post',
-            url: 'http://192.168.0.14:3000/MatchAle/saveLike',
-            data: data,
-            headers: {
-                "Accept": "application/json"
-            },
-        }).then(function (response) {
+        // axios({
+        //     method: 'post',
+        //     url: 'http://192.168.0.14:3000/MatchAle/saveLike',
+        //     data: data,
+        //     headers: {
+        //         "Accept": "application/json"
+        //     },
+        // }).then(function (response) {
 
-            console.log(response.data)
+        //     console.log(response.data)
 
-        }).catch(function (error) {
+        // }).catch(function (error) {
 
-            Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
+        //     Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
 
-            console.log(error);
-        });
+        //     console.log(error);
+        // });
     };
 
     const onSwipeRight = user => {
