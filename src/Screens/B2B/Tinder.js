@@ -13,7 +13,7 @@ import { AuthContext } from '../../Context/AuthContext';
 
 
 const TinderScreen = () => {
-    const {AllUsersData, SetAllUsersData} = useContext(AllUsersContext);
+    const { AllUsersData, SetAllUsersData } = useContext(AllUsersContext);
     const { UserToken } = useContext(AuthContext)
 
     useEffect(() => {
@@ -25,10 +25,51 @@ const TinderScreen = () => {
                     "Accept": "application/json"
                 },
             }).then(function (response) {
-                // console.log(response.data)
-        
-                SetAllUsersData(response.data)
-        
+
+
+                // busco y guardo lainformacion de usuario
+                for (let index = 0; index < response.data.length; index++) {
+                    if (response.data[index].codigo == UserToken) {
+                        const userData = response.data[index]
+
+                        response.data.splice(index, 1);
+
+                        break
+                    }
+                }
+
+                for (let index = 0; index < response.data.length; index++) {
+                    // busco y elimino el perfil de "DEV"
+                    if (response.data[index].codigo == 'DEV') {
+                        response.data.splice(index, 1);
+                    }
+
+                    // si el perfil actual esta entre los likes del usuario, elimino el perfil
+                    if (userData.likes.includes(response.data[index].codigo)) {
+                        response.data.splice(index, 1);
+                    }
+
+                    // si el perfil actual esta entre los Dislikes del usuario, elimino el perfil
+                    if (userData.dislikes.includes(response.data[index].codigo)) {
+                        response.data.splice(index, 1);
+                    }
+
+                }
+
+                const nuevoOrden = response.data.sort(function (a, b) {
+                    if (a.puntaje > b.puntaje) {
+                        return 1;
+                    }
+                    if (a.puntaje < b.puntaje) {
+                        return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                });
+
+
+                SetAllUsersData(nuevoOrden)
+
             }).catch(function (error) {
                 console.log(error);
             });
