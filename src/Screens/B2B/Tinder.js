@@ -1,6 +1,6 @@
 // React
 import { useEffect, useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, alert, Alert } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // components
 import Card from '../../Components/Card';
@@ -26,14 +26,13 @@ const TinderScreen = () => {
                 },
             }).then(function (response) {
 
-
                 let userData = null
 
                 // busco y guardo lainformacion de usuario
                 for (let index = 0; index < response.data.length; index++) {
                     if (response.data[index].codigo == UserToken) {
                         userData = response.data[index]
-                        // response.data.splice(index, 1);
+                        response.data.splice(index, 1);
 
                         break
                     }
@@ -115,8 +114,6 @@ const TinderScreen = () => {
             codigoLike: user.codigo,
         }
 
-        console.log(data)
-
         axios({
             method: 'post',
             url: 'http://192.168.0.14:3000/MatchAle/saveLike',
@@ -126,11 +123,13 @@ const TinderScreen = () => {
             },
         }).then(function (response) {
 
-            console.log(response.data)
+            // console.log(response.data)
+
+            Alert.alert('Tenes un nuevo Match! ', 'Revisa la paguina "mis reuniones" para ver a que hora es tu reunion.')
 
         }).catch(function (error) {
 
-            Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
+            Alert.alert('Pucha :(', 'Hubo un error');
 
             console.log(error);
         });
