@@ -9,10 +9,12 @@ import AnimatedStack from '../../Components/AnimatedStack';
 import axios from 'axios';
 // context
 import { AllUsersContext } from '../../Context/AllUsersContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 
 const TinderScreen = () => {
     const {AllUsersData, SetAllUsersData} = useContext(AllUsersContext);
+    const { UserToken } = useContext(AuthContext)
 
     useEffect(() => {
         if (!AllUsersData) {
@@ -34,13 +36,17 @@ const TinderScreen = () => {
     }, []);
 
     const onSwipeLeft = user => {
-        console.warn('swipe left', user.Usuario.name);
-
         const data = {
-            codigo: 'kk',
+            codigo: UserToken,
             like: false,
-            codigoLike: 'kk2'
+            codigoLike: user.codigo,
+            nombreLike: user.usuario.nombre,
+            cargoLike: user.usuario.ron_empresa,
+            empresaLike: user.empresa.nombre,
+            fotoLike: user.usuario.foto
         }
+
+        console.log(data)
 
         axios({
             method: 'post',
@@ -62,7 +68,30 @@ const TinderScreen = () => {
     };
 
     const onSwipeRight = user => {
-        console.warn('swipe right: ', user.Usuario.name);
+        const data = {
+            codigo: UserToken,
+            codigoLike: user.codigo,
+        }
+
+        console.log(data)
+
+        axios({
+            method: 'post',
+            url: 'http://192.168.0.14:3000/MatchAle/saveLike',
+            data: data,
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
+
+            console.log(response.data)
+
+        }).catch(function (error) {
+
+            Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
+
+            console.log(error);
+        });
     };
 
     return (
