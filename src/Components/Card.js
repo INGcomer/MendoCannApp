@@ -4,11 +4,15 @@ import { Text } from '@ui-kitten/components';
 
 export default function Card(props) {
     const { usuario, empresa } = props.user;
+
+    const foto = `http://192.168.0.14:3000/imgs/MatchAle/${usuario.foto}.png`
+    const logo = `http://192.168.0.14:3000/imgs/MatchAle/${empresa.logo}.png`
+
     return (
         <View style={styles.card}>
             <View style={styles.User}>
                 <View style={styles.imageContainer}>
-                    <Image source={{ uri: usuario.foto }} style={styles.image} />
+                    <Image source={ {uri: foto} } style={styles.image} />
 
                 </View>
                 <View style={styles.nombreContainer}>
@@ -22,7 +26,7 @@ export default function Card(props) {
 
             <View style={styles.empresa}>
                 <View style={styles.logoContainer}>
-                    {empresa.logo ? <Image source={{ uri: empresa.logo }} style={styles.image} /> : null }
+                    {empresa.logo ? <Image source={{ uri: logo }} style={styles.image} /> : null }
                     
                 </View>
                 <View>
