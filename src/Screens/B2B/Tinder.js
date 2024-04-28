@@ -1,5 +1,5 @@
 // React
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // components
@@ -15,6 +15,8 @@ import { AuthContext } from '../../Context/AuthContext';
 const TinderScreen = () => {
     const { AllUsersData, SetAllUsersData } = useContext(AllUsersContext);
     const { UserToken } = useContext(AuthContext)
+
+    const [OnLoading, SetOnLoading] = useState(false);
 
     useEffect(() => {
         axios({
@@ -91,6 +93,7 @@ const TinderScreen = () => {
     }, []);
 
     const onSwipeLeft = user => {
+        SetOnLoading(true)
         // const data = {
         //     codigo: UserToken,
         //     like: false,
@@ -120,9 +123,15 @@ const TinderScreen = () => {
 
         //     console.log(error);
         // });
+
+        setTimeout(() => {
+            SetOnLoading(false)
+        }, 1500);
     };
 
     const onSwipeRight = user => {
+        SetOnLoading(true)
+
         const data = {
             codigo: UserToken,
             codigoLike: user.codigo,
@@ -137,18 +146,15 @@ const TinderScreen = () => {
             },
         }).then(function (response) {
 
-            // SetUserInfo(response.data.infoUsuario)
-
-            // console.log(response.data.infoUsuario)
-
-
+           SetOnLoading(false)
+           
             if (response.data.Match) {
                 Alert.alert('Tenes un nuevo Match! ', 'Revisa la paguina "mis reuniones" para ver a que hora es tu reunion.')
             }
 
-
-
         }).catch(function (error) {
+
+            SetOnLoading(false)
 
             Alert.alert('Pucha :(', 'Hubo un error');
 
@@ -170,6 +176,13 @@ const TinderScreen = () => {
                     <Text style={styles.LoadingText}> Cargando . . . </Text>
                 </View>
             }
+            {OnLoading ?
+                <View style={styles.coertura}>
+                    <Text style={styles.LoadingText}> Cargando . . . </Text>
+                </View>
+                :
+                null
+            }
         </View>
     );
 };
@@ -189,6 +202,14 @@ const styles = StyleSheet.create({
     LoadingText: {
         fontSize: 50,
         fontWeight: 700
+    },
+    coertura: {
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        backgroundColor: '#0000006e',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 
