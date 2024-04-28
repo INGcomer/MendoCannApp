@@ -150,7 +150,7 @@ const AnimatedStack = props => {
                             pressed && styles.HomeButton2
                         ]}
                     >
-                        <Icon name='thumbs-down' style={styles.icons} />
+                        <Icon name='thumbs-down' style={[styles.icons, styles.DislikeButton]} />
                         <Text style={styles.HomeButtonText}>No me gusta</Text>
                     </Pressable>
                     <Pressable
@@ -167,7 +167,7 @@ const AnimatedStack = props => {
                             pressed && styles.HomeButton2
                         ]}
                     >
-                        <Icon name='thumbs-up' style={styles.icons} />
+                        <Icon name='thumbs-up' style={[styles.icons, styles.likeButton]} />
                         <Text style={styles.HomeButtonText}>Me gusta</Text>
                     </Pressable>
                 </View>
@@ -237,21 +237,14 @@ const styles = StyleSheet.create({
         elevation: 20
     },
     HomeButton2: {
-        height: 100,
-        width: 100,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        shadowColor: "#2A3330",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 11.27,
         elevation: 2
     },
+    likeButton: {
+        tintColor: '#B3E41D'
+    },  
+    DislikeButton: {
+        tintColor: '#EE4125'
+    },  
     HomeButtonText: {
         color: '#2A3330',
         fontSize: 15
