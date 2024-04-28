@@ -1,6 +1,6 @@
 // React
 import { useEffect, useContext } from 'react';
-import { View, StyleSheet, alert, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // components
 import Card from '../../Components/Card';
@@ -17,63 +17,77 @@ const TinderScreen = () => {
     const { UserToken } = useContext(AuthContext)
 
     useEffect(() => {
-        if (!AllUsersData) {
-            axios({
-                method: 'get',
-                url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
-                headers: {
-                    "Accept": "application/json"
-                },
-            }).then(function (response) {
+        axios({
+            method: 'get',
+            url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
 
-                let userData = null
+            let userData = null
 
-                // busco y guardo lainformacion de usuario
-                for (let index = 0; index < response.data.length; index++) {
-                    if (response.data[index].codigo == UserToken) {
-                        userData = response.data[index]
-                        response.data.splice(index, 1);
+            // busco y guardo lainformacion de usuario
+            for (let index = 0; index < response.data.length; index++) {
+                if (response.data[index].codigo == UserToken) {
+                    userData = response.data[index]
+                    // SetUserInfo(response.data[index])
+                    response.data.splice(index, 1);
 
-                        break
-                    }
+                    break
+                }
+            }
+
+            for (let index = 0; index < response.data.length; index++) {
+                // busco y elimino el perfil de "DEV"
+                if (response.data[index].codigo == 'DEV') {
+                    // response.data.splice(index, 1);
+                    response.data[index] = null
+
+                    continue
                 }
 
-                for (let index = 0; index < response.data.length; index++) {
-                    // busco y elimino el perfil de "DEV"
-                    if (response.data[index].codigo == 'DEV') {
-                        response.data.splice(index, 1);
-                    }
-
+                // Reviso si el usuario ha dado Likes
+                if (userData.likes.length > 0) {
                     // si el perfil actual esta entre los likes del usuario, elimino el perfil
                     if (userData.likes.includes(response.data[index].codigo)) {
-                        response.data.splice(index, 1);
-                    }
+                        // response.data.splice(index, 1);
+                        response.data[index] = null
 
-                    // si el perfil actual esta entre los Dislikes del usuario, elimino el perfil
-                    if (userData.dislikes.includes(response.data[index].codigo)) {
-                        response.data.splice(index, 1);
+                        continue
                     }
-
                 }
 
-                const nuevoOrden = response.data.sort(function (a, b) {
-                    if (a.puntaje > b.puntaje) {
-                        return 1;
+                // Reviso si el usuario ha dado DisLikes
+                if (userData.dislikes.length > 0) {
+                    // si el perfil actual esta entre los Dislikes del usuario, elimino el perfil
+                    if (userData.dislikes.includes(response.data[index].codigo)) {
+                        // response.data.splice(index, 1);
+                        response.data[index] = null
+
+                        continue
                     }
-                    if (a.puntaje < b.puntaje) {
-                        return -1;
-                    }
-                    // a must be equal to b
-                    return 0;
-                });
+                }
+            }
 
+            const dataLimpia = response.data.filter(usuario => usuario != null)
 
-                SetAllUsersData(nuevoOrden)
-
-            }).catch(function (error) {
-                console.log(error);
+            const nuevoOrden = dataLimpia.sort(function (a, b) {
+                if (a.puntaje < b.puntaje) {
+                    return 1;
+                }
+                if (a.puntaje > b.puntaje) {
+                    return -1;
+                }
+                // a must be equal to b
+                return 0;
             });
-        }
+
+            SetAllUsersData(nuevoOrden)
+
+        }).catch(function (error) {
+            console.log(error);
+        });
     }, []);
 
     const onSwipeLeft = user => {
@@ -123,9 +137,16 @@ const TinderScreen = () => {
             },
         }).then(function (response) {
 
-            // console.log(response.data)
+            // SetUserInfo(response.data.infoUsuario)
 
-            Alert.alert('Tenes un nuevo Match! ', 'Revisa la paguina "mis reuniones" para ver a que hora es tu reunion.')
+            // console.log(response.data.infoUsuario)
+
+
+            if (response.data.Match) {
+                Alert.alert('Tenes un nuevo Match! ', 'Revisa la paguina "mis reuniones" para ver a que hora es tu reunion.')
+            }
+
+
 
         }).catch(function (error) {
 
