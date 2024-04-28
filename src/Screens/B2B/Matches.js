@@ -56,36 +56,26 @@ const MatchesScreen = () => {
 }
 
 const BotonDisertante = (({ data }) => {
+    let horarioFin = data.horario.split(':')
+
+    horarioFin = horarioFin[0] + ':' + (parseInt(horarioFin[1]) + 15)
+    console.log(horarioFin)
+
     return (
         <View style={[styles.Disertante]}>
 
             <Text style={styles.horario}>
-                <Text style={[styles.horarioText]}> De:  </Text>
-                <Text style={[styles.horarioTextBold]}> {data.inicio} </Text>
+                <Text style={[styles.horarioText]}> De: </Text>
+                <Text style={[styles.horarioTextBold]}> {data.horario}  </Text>
                 <Text style={[styles.horarioText]}> A:  </Text>
-                <Text style={[styles.horarioTextBold]}> {data.fin} </Text>
+                <Text style={[styles.horarioTextBold]}> {horarioFin} </Text>
             </Text>
 
 
             <View style={styles.info}>
-                <Text style={[styles.titulo, styles.texto]}>  {data.nombre} </Text>
-                <Text style={[styles.descripcion, styles.texto]}> {data.descripcion} </Text>
-            </View>
-
-            <View style={styles.QuienDondeContainer}>
-                <View style={styles.QuienDonde}>
-                    <Icon name='user' style={styles.icons} />
-                    <Text style={styles.texto}> {data.disertante.nombre} </Text>
-                </View>
-                <View style={styles.QuienDonde}>
-                    <Icon name='map-pin' style={styles.icons} />
-                    <Text style={styles.texto}> {data.ubicacion} </Text>
-                </View>
-                <View style={styles.QuienDonde}>
-                    <Icon name='info' style={styles.icons} />
-                    <Text style={styles.texto}> {data.tipo} </Text>
-                    <Text style={styles.texto}> {data.sector} </Text>
-                </View>
+                <Text style={[styles.titulo, styles.texto]}> Reunion en el sector B2B  </Text>
+                <Text style={[styles.titulo, styles.texto]}>Con:  {data.usuario_2.nombre}  </Text>
+                <Text style={[styles.titulo, styles.texto]}> En la mesa: {data.mesa} </Text>
             </View>
 
         </View>
@@ -133,7 +123,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     Disertante: {
-        height: 250,
+        height: 180,
         width: '90%',
         marginTop: 10,
         marginBottom: 10,
@@ -209,6 +199,16 @@ const styles = StyleSheet.create({
         height: 25,
         width: 25,
         tintColor: "#2A3330",
+    },
+    LoadingContainer: {
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    LoadingText: {
+        fontSize: 50,
+        fontWeight: 700
     },
 });
 
