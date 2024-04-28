@@ -98,8 +98,6 @@ const ListaScreen = ({ navigation }) => {
                 texto: `Usuarios sin valorar ${nuevoOrden.length} de ${nuevoOrden.length + likes.length + Dislikes.length}`
             })
 
-            console.log(nuevoOrden)
-
             nuevoOrden.push({
                 tipo: 'titulo',
                 texto: "Mis me gusta"

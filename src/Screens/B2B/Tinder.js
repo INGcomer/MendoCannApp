@@ -94,39 +94,33 @@ const TinderScreen = () => {
 
     const onSwipeLeft = user => {
         SetOnLoading(true)
-        // const data = {
-        //     codigo: UserToken,
-        //     like: false,
-        //     codigoLike: user.codigo,
-        //     nombreLike: user.usuario.nombre,
-        //     cargoLike: user.usuario.ron_empresa,
-        //     empresaLike: user.empresa.nombre,
-        //     fotoLike: user.usuario.foto
-        // }
 
-        // console.log(data)
+        const data = {
+            codigo: UserToken,
+            codigoLike: user.codigo,
+        }
 
-        // axios({
-        //     method: 'post',
-        //     url: 'http://192.168.0.14:3000/MatchAle/saveLike',
-        //     data: data,
-        //     headers: {
-        //         "Accept": "application/json"
-        //     },
-        // }).then(function (response) {
+        axios({
+            method: 'post',
+            url: 'http://192.168.0.14:3000/MatchAle/saveDislike',
+            data: data,
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
 
-        //     console.log(response.data)
+           SetOnLoading(false)
+           
+           console.log(response.data);
 
-        // }).catch(function (error) {
+        }).catch(function (error) {
 
-        //     Alert.alert('Pucha :(', 'No encontramos el codigo ingresado');
-
-        //     console.log(error);
-        // });
-
-        setTimeout(() => {
             SetOnLoading(false)
-        }, 1500);
+
+            Alert.alert('Pucha :(', 'Hubo un error');
+
+            console.log(error);
+        });
     };
 
     const onSwipeRight = user => {
