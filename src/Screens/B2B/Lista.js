@@ -178,6 +178,15 @@ const BotonDisertante = (({ data, navigation }) => {
                                 </Text>
                             </Text>
 
+                            {/* <Text style={[styles.descripcion]}>
+                                <Text style={[styles.texto, styles.conferencia]}>
+                                    Descripcion: 
+                                </Text>
+                                <Text style={[styles.texto, styles.descripcion]}>
+                                    {data.empresa.descripcion}
+                                </Text>
+                            </Text> */}
+
                         </View>
                     </View>
 
@@ -287,6 +296,10 @@ const styles = StyleSheet.create({
     nombre: {
         fontSize: 30,
         fontWeight: 800
+    },
+    descripcion: {
+        fontSize: 15,
+        height: "30%"
     },
     conferencia: {
         // fontSize: 30,

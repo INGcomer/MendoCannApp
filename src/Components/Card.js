@@ -17,8 +17,8 @@ export default function Card(props) {
                 </View>
                 <View style={styles.nombreContainer}>
                     <Text style={styles.name}>{usuario.nombre}</Text>
-                    <Text style={styles.bio}>{usuario.ron_empresa}</Text>
-                    <Text style={styles.bio}>en {empresa.nombre}</Text>
+                    <Text style={styles.rubro}>{usuario.ron_empresa}</Text>
+                    <Text style={styles.rubro}>en {empresa.nombre}</Text>
                 </View>
             </View>
 
@@ -31,7 +31,8 @@ export default function Card(props) {
                 </View>
                 <View>
                     <Text style={styles.name}>{empresa.nombre}</Text>
-                    <Text style={styles.bio}>{empresa.rubro}</Text>
+                    <Text style={styles.rubro}>{empresa.rubro}</Text>
+                    <Text style={styles.bio}>{empresa.descripcion}</Text>
                 </View>
             </View>
 
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
         width: '100%',
-        height: '50%',
+        height: '30%',
     },
     image: {
         width: 'auto',
@@ -91,8 +92,13 @@ const styles = StyleSheet.create({
         color: '#2A3330',
         fontWeight: 'bold',
     },
-    bio: {
+    rubro: {
         fontSize: 18,
+        color: '#2A3330',
+        lineHeight: 25,
+    },
+    bio: {
+        fontSize: 13,
         color: '#2A3330',
         lineHeight: 25,
     },
