@@ -2,6 +2,8 @@
 import { useState, useContext } from 'react';
 import { useForm, Controller } from "react-hook-form"
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking, Alert } from 'react-native';
+// functions
+import BackEndUrl from '../funciones/BackEndUrl';
 // Context
 import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
@@ -31,7 +33,8 @@ const LogInScreen = ({navigation}) => {
         console.log(data)
         axios({
             method: 'post',
-            url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
+            // url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
+            url: BackEndUrl('MatchAle/GetPerfil'),
             data: data,
             headers: {
                 "Accept": "application/json"

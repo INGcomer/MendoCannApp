@@ -2,6 +2,8 @@
 import { useEffect, useContext, useState } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Text } from '@ui-kitten/components';
+// functions
+import BackEndUrl from '../../funciones/BackEndUrl';
 // components
 import Card from '../../Components/Card';
 import AnimatedStack from '../../Components/AnimatedStack';
@@ -19,9 +21,12 @@ const TinderScreen = () => {
     const [OnLoading, SetOnLoading] = useState(false);
 
     useEffect(() => {
+        console.log(BackEndUrl('MatchAle/GetAllUsers'))
+
         axios({
             method: 'get',
-            url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+            // url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+            url: BackEndUrl('MatchAle/GetAllUsers'),
             headers: {
                 "Accept": "application/json"
             },
@@ -102,7 +107,8 @@ const TinderScreen = () => {
 
         axios({
             method: 'post',
-            url: 'http://192.168.0.14:3000/MatchAle/saveDislike',
+            // url: 'http://192.168.0.14:3000/MatchAle/saveDislike',
+            url: BackEndUrl('MatchAle/saveDislike'),
             data: data,
             headers: {
                 "Accept": "application/json"
@@ -133,7 +139,7 @@ const TinderScreen = () => {
 
         axios({
             method: 'post',
-            url: 'http://192.168.0.14:3000/MatchAle/saveLike',
+            url: BackEndUrl('MatchAle/saveLike'),
             data: data,
             headers: {
                 "Accept": "application/json"

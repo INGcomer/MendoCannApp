@@ -2,6 +2,8 @@
 import { useEffect, useContext, useState } from 'react';
 import { View, StyleSheet, Alert, FlatList, Image, Pressable } from 'react-native';
 import { Text, Icon } from '@ui-kitten/components';
+// function
+import BackEndUrl from '../../funciones/BackEndUrl';
 // Axios
 import axios from 'axios';
 // context
@@ -21,7 +23,8 @@ const ListaScreen = ({ navigation }) => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+            // url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
+            url: BackEndUrl('MatchAle/GetAllUsers'),
             headers: {
                 "Accept": "application/json"
             },
@@ -150,7 +153,8 @@ const BotonDisertante = (({ data, navigation }) => {
                     <View style={styles.container}>
                         <View style={styles.fotoContainer}>
                             <Image
-                                source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
+                                // source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
+                                source={{ uri: BackEndUrl(`imgs/MatchAle/${data.usuario.foto}.png`) }}
                                 style={styles.foto}
                             />
                         </View>

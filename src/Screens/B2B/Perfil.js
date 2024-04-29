@@ -2,6 +2,8 @@
 import { useEffect, useContext, useState } from 'react';
 import { Image, View, StyleSheet, Alert, Pressable } from 'react-native';
 import { Text } from '@ui-kitten/components';
+// function
+import BackEndUrl from '../../funciones/BackEndUrl';
 // Axios
 import axios from 'axios';
 // Context
@@ -18,7 +20,8 @@ const PerfilScreen = ({navigation}) => {
     useEffect(() => {
         axios({
             method: 'post',
-            url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
+            // url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
+            url: BackEndUrl('MatchAle/GetPerfil'),
             data: { codigo: UserToken },
             headers: {
                 "Accept": "application/json"
@@ -58,7 +61,8 @@ const DataUsuario = ({ data, Logout, navigation }) => {
         <>
             <View style={styles.fotoContainer}>
                 <Image
-                    source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
+                    // source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
+                    source={{ uri: BackEndUrl(`imgs/MatchAle/${data.usuario.foto}.png`) }}
                     style={styles.foto}
                 />
             </View>
