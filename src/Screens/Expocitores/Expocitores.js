@@ -7,8 +7,8 @@ import { Text, Divider, Icon } from '@ui-kitten/components';
 import info from '../../../assets/data/Expocitores/Expocitores'
 
 const ExpocitoresScreen = ({ navigation }) => {
-    const Medicinal = info.filter((disertante) => disertante.esenario == 'medicinal')
-    const IndustriaCultivo = info.filter((disertante) => disertante.esenario == 'Industria y Cultivo')
+    const Medicinal = info.filter((disertante) => disertante.sector == '  Medicinal')
+    const IndustriaCultivo = info.filter((disertante) => disertante.sector == '  Industria y cultivo')
 
     const [BotonMedicinal, SetBotonMedicinal] = useState(true);
     const [BotonIndustria, SetBotonIndustria] = useState(true);
