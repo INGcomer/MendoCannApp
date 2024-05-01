@@ -131,7 +131,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Oro',
         sponsor: null,
-        puntaje: 2,
+        puntaje: 3,
         show: false
     },
     {
@@ -146,7 +146,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Diamante',
         sponsor: null,
-        puntaje: 3,
+        puntaje: 5,
         show: true
     },  
     {
@@ -176,6 +176,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Diamante',
         sponsor: 'Diamante',
+        puntaje: 6,
         show: true
     },
     {
@@ -190,6 +191,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Oro',
         sponsor: 'Oro',
+        puntaje: 4,
         show: true
     }, 
     {
@@ -204,6 +206,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: true
     },
     {
@@ -218,6 +221,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Diamante',
         sponsor: 'Diamante',
+        puntaje: 6,
         show: true
     },
     {
@@ -232,6 +236,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Diamante',
         sponsor: null,
+        puntaje: 5,
         show: true
     },
     {
@@ -246,6 +251,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: true
     },
     {
@@ -260,6 +266,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: true
     },
     {
@@ -274,6 +281,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: 'Plata',
+        puntaje: 2,
         show: true
     },
     {
@@ -288,6 +296,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: true
     },
     {
@@ -302,6 +311,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: false
     },
     {
@@ -316,6 +326,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Oro',
         sponsor: null,
+        puntaje: 3,
         show: true
     },
     {
@@ -330,6 +341,7 @@ export default [
         sector: '  Industria y cultivo',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: true
     },
     {
@@ -344,6 +356,7 @@ export default [
         sector: '  Medicinal',
         stand: 'Plata',
         sponsor: null,
+        puntaje: 1,
         show: true
     }    
 ]

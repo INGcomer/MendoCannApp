@@ -10,10 +10,12 @@ const ExpocitoresScreen = ({ navigation }) => {
     const Medicinal = info.filter((disertante) => disertante.sector == '  Medicinal')
     const IndustriaCultivo = info.filter((disertante) => disertante.sector == '  Industria y cultivo')
 
+    // botones
     const [BotonMedicinal, SetBotonMedicinal] = useState(true);
     const [BotonIndustria, SetBotonIndustria] = useState(true);
 
     const [Data, SetData] = useState(info);
+
 
     useEffect(() => {
         if (BotonMedicinal == true && BotonIndustria == true) {
@@ -28,6 +30,19 @@ const ExpocitoresScreen = ({ navigation }) => {
         if (BotonMedicinal == false && BotonIndustria == false) {
             SetData(null)
         }
+        // data filtrada
+        const nuevoOrden = Data.sort(function (a, b) {
+            if (a.puntaje < b.puntaje) {
+                return 1;
+            }
+            if (a.puntaje > b.puntaje) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
+        });
+
+        SetData(nuevoOrden)
     }, [BotonMedicinal, BotonIndustria]);
 
 
@@ -91,39 +106,59 @@ const BotonDisertante = (({ data, navigation }) => {
             }
             style={({ pressed }) => [
                 styles.Disertante,
-                pressed && [styles.Disertante, styles.DisertanteClicked]
+                data.sponsor == 'Diamante' && [styles.SponsorDiamante],
+                pressed && [styles.DisertanteClicked]
             ]}
         >
 
-            <View style={styles.fotoContainer}>
-                <Image
-                    source={data.foto}
-                    style={styles.foto}
-                />
+            <Text style={[styles.texto, styles.nombreDiamante]}>
+                {data.nombre}
+            </Text>
+
+            <View style={styles.fotoInfoPrincipal}>
+
+
+                <View style={styles.fotoContainer}>
+                    <Image
+                        source={data.foto}
+                        style={styles.foto}
+                    />
+                </View>
+
+                <View style={styles.textoBox}>
+                    {/* <Text style={[styles.texto, styles.nombre]}>
+                        {data.nombre}
+                    </Text> */}
+                    <Text>
+                        <Text style={[styles.texto, styles.conferencia]}>
+                            Rubro:
+                        </Text>
+                        <Text style={[styles.texto, styles.titulo]}>
+                            {data.rubro}
+                        </Text>
+                    </Text>
+                    <Text>
+                        <Text style={[styles.texto, styles.conferencia]}>
+                            Sector:
+                        </Text>
+                        <Text style={[styles.texto, styles.titulo]}>
+                            {data.sector}
+                        </Text>
+                    </Text>
+                </View>
             </View>
 
-            <View style={styles.textoBox}>
-                <Text style={[styles.texto, styles.nombre]}>
-                    {data.nombre}
-                </Text>
+            <View style={[styles.descripcion]}>
                 <Text>
                     <Text style={[styles.texto, styles.conferencia]}>
-                        Rubro:  
+                        Descripcion:
                     </Text>
                     <Text style={[styles.texto, styles.titulo]}>
-                        {data.rubro}
-                    </Text>
-                </Text>
-                <Text>
-                    <Text style={[styles.texto, styles.conferencia]}>
-                        Sector:  
-                    </Text>
-                    <Text style={[styles.texto, styles.titulo]}>
-                        {data.sector}
+                        {data.descripcion}
                     </Text>
                 </Text>
             </View>
-        </Pressable>
+        </Pressable >
     )
 })
 
@@ -168,6 +203,12 @@ const styles = StyleSheet.create({
     lista: {
         width: '100%',
     },
+    fotoInfoPrincipal: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     Disertante: {
         height: 150,
         width: '90%',
@@ -175,7 +216,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginHorizontal: 20,
         borderRadius: 30,
-        flexDirection: 'row',
+        // flexDirection: 'row',
+        flexDirection: 'colum',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
@@ -191,8 +233,19 @@ const styles = StyleSheet.create({
     DisertanteClicked: {
         elevation: 2
     },
+    SponsorDiamante: {
+        marginTop: 60,
+        // height: 300,
+        height: 'auto',
+        paddingTop: 20,
+        borderWidth: 5,
+        borderColor: '#048BA7',
+    },
+    descripcion: {
+        padding: 20
+    },
     textoBox: {
-        height: '100%',
+        height: 100,
         width: "50%",
         marginLeft: 30,
         justifyContent: 'center',
@@ -215,6 +268,11 @@ const styles = StyleSheet.create({
     nombre: {
         fontSize: 30,
         fontWeight: 800
+    },
+    nombreDiamante: {
+        fontSize: 40,
+        fontWeight: 800,
+        marginBottom: 20
     },
     conferencia: {
         // fontSize: 30,
