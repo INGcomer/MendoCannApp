@@ -7,10 +7,10 @@ import { Text, Divider, Icon } from '@ui-kitten/components';
 import info from '../../../assets/data/Disertantes/Disertantes'
 
 const DisertantesScreen = ({ navigation }) => {
-    const Medicinal = info.filter((disertante) => disertante.esenario == 'medicinal')
-    const IndustriaCultivo = info.filter((disertante) => disertante.esenario == 'Industria y Cultivo')
+    const Medicinal = info.filter((disertante) => disertante.esenario == ' Medicinal')
+    const IndustriaCultivo = info.filter((disertante) => disertante.esenario == ' Industria y Cultivo')
 
-    const [BotonMedicinal, SetBotonMedicinal] = useState(true);
+    const [BotonMedicinal, SetBotonMedicinal] = useState(false);
     const [BotonIndustria, SetBotonIndustria] = useState(true);
 
     const [Data, SetData] = useState(info);
@@ -20,13 +20,13 @@ const DisertantesScreen = ({ navigation }) => {
             SetData(info)
         }
         if (BotonMedicinal == false && BotonIndustria == true) {
-            SetData(IndustriaCultivo)
-        }
-        if (BotonMedicinal == true && BotonIndustria == false) {
             SetData(Medicinal)
         }
+        if (BotonMedicinal == true && BotonIndustria == false) {
+            SetData(IndustriaCultivo)
+        }
         if (BotonMedicinal == false && BotonIndustria == false) {
-            SetData(null)
+            SetData(info)
         }
     }, [BotonMedicinal, BotonIndustria]);
 
@@ -114,12 +114,12 @@ const BotonDisertante = (({ data, navigation }) => {
                         {data.esenario}
                     </Text>
                 </Text>
-                <Text style={[styles.texto, styles.conferencia]}>
+                {/* <Text style={[styles.texto, styles.conferencia]}>
                     Conferencia:
                 </Text>
                 <Text style={[styles.texto, styles.titulo]}>
                     {data.Conferencias}
-                </Text>
+                </Text> */}
             </View>
         </Pressable>
     )
