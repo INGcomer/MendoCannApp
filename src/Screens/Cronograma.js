@@ -101,10 +101,13 @@ const BotonDisertante = (({ data, navigation }) => {
             </View>
 
             <View style={styles.QuienDondeContainer}>
-                <View style={styles.QuienDonde}>
-                    <Icon name='user' style={styles.icons} />
-                    <Text style={styles.texto}> {data.disertante.nombre} </Text>
-                </View>
+                {data.disertante ?
+                    <View style={styles.QuienDonde}>
+                        <Icon name='user' style={styles.icons} />
+                        <Text style={styles.texto}> {data.disertante.nombre} </Text>
+                    </View>
+                    :
+                    null}
                 <View style={styles.QuienDonde}>
                     <Icon name='map-pin' style={styles.icons} />
                     <Text style={styles.texto}> {data.ubicacion} </Text>
@@ -186,6 +189,7 @@ const styles = StyleSheet.create({
     },
     texto: {
         color: 'black',
+        textAlign: 'center'
     },
     nombre: {
         fontSize: 30,
