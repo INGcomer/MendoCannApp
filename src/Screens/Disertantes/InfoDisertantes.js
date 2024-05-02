@@ -49,11 +49,15 @@ const InfoDisertantesScreen = ({ route, navigation }) => {
 
             </View>
 
-            <Text category='h2' style={styles.nombre}> Actividades </Text>
+            {Data.actividades ?
+                <>
 
-            <View style={styles.lista}>
-                {Data.actividades.map((item, key) => {
-                    return (
+                    <Text category='h2' style={styles.nombre}> Actividades </Text>
+
+                    <View style={styles.lista}>
+                
+                    {Data.actividades.map((item, key) => {
+                        return (
                         <View style={styles.Actividad} key={key}>
                             <Text category='h3' style={styles.ActividadTitulo}> {item.nombre} </Text>
                             <Text style={styles.ActividadDescripcion}> {item.descripcion} </Text>
@@ -69,9 +73,14 @@ const InfoDisertantesScreen = ({ route, navigation }) => {
                                 </Text>
                             </View>
                         </View>
-                    )
-                })}
-            </View>
+                        )
+                    })}
+
+                    </View>
+
+                </>
+                :
+                null}
 
         </ScrollView >
 
