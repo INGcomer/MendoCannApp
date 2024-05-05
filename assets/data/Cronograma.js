@@ -1,6 +1,6 @@
 export default [
     {
-        dia: 17,
+        dia: '2024-05-17',
         nombre: "Acto de Apertura",
         tipo: "Acto de Apertura",
         sector: "Medicinal, Industria y Cultivo",
@@ -10,7 +10,7 @@ export default [
         fin: "12:30",
     },
     {
-        dia: 17,
+        dia: '2024-05-17',
         nombre: "El método científico y las luminarias de cultivo",
         tipo: "Conferencia",
         sector: "Industria y cultivo",
@@ -24,7 +24,7 @@ export default [
         },
     },
     {
-        dia: 17,
+        dia: '2024-05-17',
         nombre: "Criadores 1439",
         tipo: "Conferencia",
         sector: "Industria y cultivo",

@@ -1,10 +1,12 @@
 // React
 import React, { useContext } from 'react';
 import { View, StyleSheet, Button, TouchableHighlight, Pressable, Image } from 'react-native';
-// Context
-import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
 import { Text, Divider, Icon } from '@ui-kitten/components';
+// Context
+import { AuthContext } from '../Context/AuthContext';
+// components
+import HomeNow from '../Components/HomeNow';
 // img
 import Logo from '../../assets/Logos/Logo completo.png'
 
@@ -21,17 +23,14 @@ const EventosScreen = ({ navigation }) => {
                     style={styles.foto}
                 />
             </View>
-            <Pressable
-                onPress={() => navigation.navigate('EventoStack')}
-                style={({ pressed }) => [
-                    styles.HomeButtonNow,
-                    pressed && styles.HomeButtonNowClicked
-                ]}
-            >
+
+            <HomeNow/>
+
+            {/* <View style={styles.HomeButtonNow} >
                 <Icon name='clock' style={styles.icons} />
-                <Text style={styles.HomeButtonText}>Cronograma</Text>
-            </Pressable>
-            
+                <Text style={styles.HomeButtonText}>kk</Text>
+            </View> */}
+
             <Pressable
                 onPress={() => navigation.navigate('Cronograma')}
                 style={({ pressed }) => [
@@ -135,38 +134,6 @@ const styles = StyleSheet.create({
     HomeButton2: {
         height: 150,
         width: 150,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        shadowColor: "#2A3330",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 11.27,
-        elevation: 2
-    },
-    HomeButtonNow: {
-        height: 150,
-        width: 325,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        shadowColor: "#2A3330",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 11.27,
-        elevation: 20
-    },
-    HomeButtonNowClicked: {
-        height: 150,
-        width: 325,
         borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',

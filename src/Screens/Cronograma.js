@@ -74,19 +74,15 @@ const CronogramaScreen = ({ navigation }) => {
 
 const BotonDisertante = (({ data, navigation }) => {
     return (
-        <Pressable
-            onPress={() =>
-                navigation.navigate('InfoDisertantes', {
-                    nombre: data.nombre,
-                    Data: data
-                })
-            }
-            style={({ pressed }) => [
-                styles.Disertante,
-                pressed && [styles.Disertante, styles.DisertanteClicked]
-            ]}
+        <View
+            // onPress={() =>
+            //     navigation.navigate('InfoDisertantes', {
+            //         nombre: data.nombre,
+            //         Data: data
+            //     })
+            // }
+            style={styles.Disertante}
         >
-
             <Text style={styles.horario}>
                 <Text style={[styles.horarioText]}> De:  </Text>
                 <Text style={[styles.horarioTextBold]}> {data.inicio} </Text>
@@ -119,7 +115,7 @@ const BotonDisertante = (({ data, navigation }) => {
                 </View>
             </View>
 
-        </Pressable>
+        </View>
     )
 })
 
