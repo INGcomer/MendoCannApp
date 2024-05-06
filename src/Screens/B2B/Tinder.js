@@ -25,7 +25,6 @@ const TinderScreen = () => {
 
         axios({
             method: 'get',
-            // url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
             url: BackEndUrl('MatchAle/GetAllUsers'),
             headers: {
                 "Accept": "application/json"
@@ -98,68 +97,71 @@ const TinderScreen = () => {
     }, []);
 
     const onSwipeLeft = user => {
-        SetOnLoading(true)
+        if (user) {
+            SetOnLoading(true)
 
-        const data = {
-            codigo: UserToken,
-            codigoLike: user.codigo,
+            const data = {
+                codigo: UserToken,
+                codigoLike: user.codigo,
+            }
+
+            axios({
+                method: 'post',
+                url: BackEndUrl('MatchAle/saveDislike'),
+                data: data,
+                headers: {
+                    "Accept": "application/json"
+                },
+            }).then(function (response) {
+
+                SetOnLoading(false)
+
+                console.log(response.data);
+
+            }).catch(function (error) {
+
+                SetOnLoading(false)
+
+                Alert.alert('Pucha :(', 'Hubo un error');
+
+                console.log(error);
+            });
         }
-
-        axios({
-            method: 'post',
-            // url: 'http://192.168.0.14:3000/MatchAle/saveDislike',
-            url: BackEndUrl('MatchAle/saveDislike'),
-            data: data,
-            headers: {
-                "Accept": "application/json"
-            },
-        }).then(function (response) {
-
-           SetOnLoading(false)
-           
-           console.log(response.data);
-
-        }).catch(function (error) {
-
-            SetOnLoading(false)
-
-            Alert.alert('Pucha :(', 'Hubo un error');
-
-            console.log(error);
-        });
     };
 
     const onSwipeRight = user => {
-        SetOnLoading(true)
+        if (user) {
+            SetOnLoading(true)
 
-        const data = {
-            codigo: UserToken,
-            codigoLike: user.codigo,
-        }
-
-        axios({
-            method: 'post',
-            url: BackEndUrl('MatchAle/saveLike'),
-            data: data,
-            headers: {
-                "Accept": "application/json"
-            },
-        }).then(function (response) {
-
-           SetOnLoading(false)
-           
-            if (response.data.Match) {
-                Alert.alert('Tenes un nuevo Match! ', 'Revisa la paguina "mis reuniones" para ver a que hora es tu reunion.')
+            const data = {
+                codigo: UserToken,
+                codigoLike: user.codigo,
             }
 
-        }).catch(function (error) {
+            axios({
+                method: 'post',
+                url: BackEndUrl('MatchAle/saveLike'),
+                data: data,
+                headers: {
+                    "Accept": "application/json"
+                },
+            }).then(function (response) {
 
-            SetOnLoading(false)
+                SetOnLoading(false)
 
-            Alert.alert('Pucha :(', 'Hubo un error');
+                if (response.data.Match) {
+                    Alert.alert('Tenes un nuevo Match! ', 'Revisa la paguina "mis reuniones" para ver a que hora es tu reunion.')
+                }
 
-            console.log(error);
-        });
+            }).catch(function (error) {
+
+                SetOnLoading(false)
+
+                Alert.alert('Pucha :(', 'Hubo un error');
+
+                console.log(error);
+            });
+        }
     };
 
     return (

@@ -1,6 +1,6 @@
 // React
 import { useEffect, useContext, useState } from 'react';
-import { Image, View, StyleSheet, Alert, FlatList } from 'react-native';
+import { View, StyleSheet, Alert, FlatList } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // function
 import BackEndUrl from '../../funciones/BackEndUrl';
@@ -18,7 +18,6 @@ const MatchesScreen = () => {
     useEffect(() => {
         axios({
             method: 'post',
-            // url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
             url: BackEndUrl('MatchAle/GetPerfil'),
             data: { codigo: UserToken },
             headers: {
@@ -42,11 +41,16 @@ const MatchesScreen = () => {
         <View style={styles.pageContainer}>
 
             {UserData ?
-                <FlatList
-                    style={styles.lista}
-                    data={UserData.reuniones}
-                    renderItem={({ item }) => <BotonDisertante data={item} />}
-                />
+                UserData.reuniones.length > 0 ?
+                    <FlatList
+                        style={styles.lista}
+                        data={UserData.reuniones}
+                        renderItem={({ item }) => <BotonDisertante data={item} />}
+                    />
+                    :
+                    <View style={styles.LoadingContainer}>
+                        <Text style={styles.LoadingText}> No hay reuniones programadas </Text>
+                    </View>
                 :
                 <View style={styles.LoadingContainer}>
                     <Text style={styles.LoadingText}> Cargando . . . </Text>
@@ -211,7 +215,8 @@ const styles = StyleSheet.create({
     },
     LoadingText: {
         fontSize: 50,
-        fontWeight: 700
+        fontWeight: 700,
+        textAlign: 'center'
     },
 });
 

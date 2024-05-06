@@ -20,7 +20,6 @@ const PerfilScreen = ({navigation}) => {
     useEffect(() => {
         axios({
             method: 'post',
-            // url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
             url: BackEndUrl('MatchAle/GetPerfil'),
             data: { codigo: UserToken },
             headers: {
@@ -61,7 +60,6 @@ const DataUsuario = ({ data, Logout, navigation }) => {
         <>
             <View style={styles.fotoContainer}>
                 <Image
-                    // source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
                     source={{ uri: BackEndUrl(`imgs/MatchAle/${data.usuario.foto}.png`) }}
                     style={styles.foto}
                 />
@@ -90,11 +88,9 @@ const DataUsuario = ({ data, Logout, navigation }) => {
 
 const styles = StyleSheet.create({
     pageContainer: {
-        // justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'colum',
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
     },
     nombre: {
@@ -179,7 +175,9 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 11.27,
-        elevation: 20
+        elevation: 20,
+        position: 'absolute',
+        bottom: 50
     },
     HomeButton2: {
         elevation: 2

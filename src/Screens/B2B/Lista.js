@@ -1,29 +1,22 @@
 // React
 import { useEffect, useContext, useState } from 'react';
-import { View, StyleSheet, Alert, FlatList, Image, Pressable } from 'react-native';
-import { Text, Icon } from '@ui-kitten/components';
+import { View, StyleSheet, FlatList, Image } from 'react-native';
+import { Text } from '@ui-kitten/components';
 // function
 import BackEndUrl from '../../funciones/BackEndUrl';
 // Axios
 import axios from 'axios';
 // context
-import { AllUsersContext } from '../../Context/AllUsersContext';
 import { AuthContext } from '../../Context/AuthContext';
 
 const ListaScreen = ({ navigation }) => {
-    // const { AllUsersData, SetAllUsersData } = useContext(AllUsersContext);
     const { UserToken } = useContext(AuthContext)
 
-    const [OnLoading, SetOnLoading] = useState(false);
-
     const [AllUsersDataLocal, SetAllUsersDataLocal] = useState();
-
-    // const foto = `http://192.168.0.14:3000/imgs/MatchAle/${usuario.foto}.png`
 
     useEffect(() => {
         axios({
             method: 'get',
-            // url: 'http://192.168.0.14:3000/MatchAle/GetAllUsers',
             url: BackEndUrl('MatchAle/GetAllUsers'),
             headers: {
                 "Accept": "application/json"
@@ -124,14 +117,17 @@ const ListaScreen = ({ navigation }) => {
 
     return (
         <View style={styles.pageContainer}>
-
-
-            <FlatList
-                style={styles.lista}
-                // data={Usuarios}
-                data={AllUsersDataLocal}
-                renderItem={({ item }) => <BotonDisertante data={item} navigation={navigation} />}
-            />
+            {AllUsersDataLocal ?
+                <FlatList
+                    style={styles.lista}
+                    data={AllUsersDataLocal}
+                    renderItem={({ item }) => <BotonDisertante data={item} navigation={navigation} />}
+                />
+                :
+                <View style={styles.coertura}>
+                    <Text style={styles.LoadingText}> Cargando . . . </Text>
+                </View>
+            }
 
 
         </View>
@@ -153,7 +149,6 @@ const BotonDisertante = (({ data, navigation }) => {
                     <View style={styles.container}>
                         <View style={styles.fotoContainer}>
                             <Image
-                                // source={{ uri: `http://192.168.0.14:3000/imgs/MatchAle/${data.usuario.foto}.png` }}
                                 source={{ uri: BackEndUrl(`imgs/MatchAle/${data.usuario.foto}.png`) }}
                                 style={styles.foto}
                             />
@@ -180,44 +175,8 @@ const BotonDisertante = (({ data, navigation }) => {
                                 </Text>
                             </Text>
 
-                            {/* <Text style={[styles.descripcion]}>
-                                <Text style={[styles.texto, styles.conferencia]}>
-                                    Descripcion: 
-                                </Text>
-                                <Text style={[styles.texto, styles.descripcion]}>
-                                    {data.empresa.descripcion}
-                                </Text>
-                            </Text> */}
-
                         </View>
                     </View>
-
-                    {/* {data.like === 'indefinido' ?
-                        <View style={styles.Botones}>
-                            <Pressable
-                                onPress={() => { }}
-                                style={({ pressed }) => [
-                                    styles.HomeButton,
-                                    pressed && styles.HomeButton2
-                                ]}
-                            >
-                                <Icon name='thumbs-down' style={styles.icons} />
-                                <Text style={styles.HomeButtonText}>No me gusta</Text>
-                            </Pressable>
-                            <Pressable
-                                onPress={() => { }}
-                                style={({ pressed }) => [
-                                    styles.HomeButton,
-                                    pressed && styles.HomeButton2
-                                ]}
-                            >
-                                <Icon name='thumbs-up' style={styles.icons} />
-                                <Text style={styles.HomeButtonText}>Me gusta</Text>
-                            </Pressable>
-                        </View>
-                        :
-                        null
-                    } */}
                 </>
             }
 
@@ -234,14 +193,12 @@ const styles = StyleSheet.create({
         flexDirection: 'colum',
         flexWrap: "wrap",
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
     },
     lista: {
         width: '100%',
     },
     Disertante: {
-        // height: 150,
         width: '90%',
         marginTop: 10,
         marginBottom: 10,
@@ -292,7 +249,6 @@ const styles = StyleSheet.create({
         width: "auto"
     },
     texto: {
-        // color: '#2A3330',
         color: 'black',
     },
     nombre: {
@@ -304,7 +260,6 @@ const styles = StyleSheet.create({
         height: "30%"
     },
     conferencia: {
-        // fontSize: 30,
         fontWeight: 800
     },
     icons: {
@@ -323,7 +278,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         width: '100%',
-        // backgroundColor: 'red',
     },
     HomeButton: {
         height: 100,
@@ -365,6 +319,16 @@ const styles = StyleSheet.create({
         height: 25,
         width: 25,
         tintColor: "#2A3330",
+    },
+    coertura: {
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    LoadingText: {
+        fontSize: 50,
+        fontWeight: 700
     },
 });
 
