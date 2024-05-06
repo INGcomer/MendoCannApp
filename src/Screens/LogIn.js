@@ -1,17 +1,15 @@
 // React
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { useForm, Controller } from "react-hook-form"
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 // functions
 import BackEndUrl from '../funciones/BackEndUrl';
 // Context
 import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
-import { Icon, Input, Text, Button } from '@ui-kitten/components';
+import { Input, Text, Button } from '@ui-kitten/components';
 // Axios
 import axios from 'axios';
-// IMGs
-import LOGO from '../../assets/images/logo 1.png';
 
 const LogInScreen = ({navigation}) => {
     const {Login} = useContext(AuthContext)
@@ -27,23 +25,14 @@ const LogInScreen = ({navigation}) => {
     })
 
     const onSubmit = (data) => {
-
-        // navigation.navigate('B2B')
-
-        console.log(data)
         axios({
             method: 'post',
-            // url: 'http://192.168.0.14:3000/MatchAle/GetPerfil',
             url: BackEndUrl('MatchAle/GetPerfil'),
             data: data,
             headers: {
                 "Accept": "application/json"
             },
         }).then(function (response) {
-
-            // Alert.alert('Genail', 'estas logueado');
-
-            console.log(response.data.codigo)
 
             Login(response.data.codigo)
 
@@ -72,10 +61,6 @@ const LogInScreen = ({navigation}) => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <Input
                         placeholder='Codigo'
-                        // value={value}
-                        // onChangeText={nextValue => SetEmailValue(nextValue)}
-
-
                         status={errors.Nombre ? "danger" : 'basic'}
                         onBlur={onBlur}
                         onChangeText={onChange}

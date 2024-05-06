@@ -1,5 +1,4 @@
 import { createStackNavigator } from '@react-navigation/stack';
-
 // Componentes
 import LogInScreen from '../../Screens/LogIn';
 import DatosPersonales from '../../Screens/SingIn/DatosPersonales';

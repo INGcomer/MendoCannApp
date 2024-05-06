@@ -1,13 +1,7 @@
 // React
-import { useState, useContext } from 'react';
-import { useForm, Controller } from "react-hook-form"
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking, Alert } from 'react-native';
-// Kitten UI
-import { Icon, Input, Text, Button } from '@ui-kitten/components';
+import { StyleSheet, View, Image} from 'react-native';
 
 const Sponsors = () => {
-
-
     return (
         <View style={styles.pageContainer}>
 

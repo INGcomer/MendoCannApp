@@ -1,8 +1,8 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Pressable, Image, FlatList } from 'react-native';
+import { View, StyleSheet, Pressable, FlatList } from 'react-native';
 // Kitten UI
-import { Text, Divider, Icon } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 // data
 import info from '../../assets/data/Cronograma'
 
@@ -74,15 +74,7 @@ const CronogramaScreen = ({ navigation }) => {
 
 const BotonDisertante = (({ data, navigation }) => {
     return (
-        <View
-            // onPress={() =>
-            //     navigation.navigate('InfoDisertantes', {
-            //         nombre: data.nombre,
-            //         Data: data
-            //     })
-            // }
-            style={styles.Disertante}
-        >
+        <View style={styles.Disertante}>
             <Text style={styles.horario}>
                 <Text style={[styles.horarioText]}> De:  </Text>
                 <Text style={[styles.horarioTextBold]}> {data.inicio} </Text>
@@ -114,7 +106,6 @@ const BotonDisertante = (({ data, navigation }) => {
                     <Text style={styles.texto}> {data.sector} </Text>
                 </View>
             </View>
-
         </View>
     )
 })
@@ -126,7 +117,6 @@ const styles = StyleSheet.create({
         flexDirection: 'colum',
         flexWrap: "wrap",
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
     },
     controles: {
@@ -167,7 +157,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         borderRadius: 30,
         flexDirection: 'colum',
-        // justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
         shadowColor: "#2A3330",

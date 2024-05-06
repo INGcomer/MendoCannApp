@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, useWindowDimensions } from 'react-native';
-
 import { Pressable } from 'react-native';
 import { Text, Icon } from '@ui-kitten/components';
-
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -190,14 +188,10 @@ const styles = StyleSheet.create({
     },
     nextCardContainer: {
         ...StyleSheet.absoluteFillObject,
-
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        // height: '70%'
-
         top: 0
-
     },
     like: {
         width: 200,
@@ -205,11 +199,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 100,
         zIndex: 1,
-        // elevation: 1,
     },
-
-
-
     Botones: {
         height: 100,
         paddingLeft: 25,
@@ -218,7 +208,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         width: '100%',
-        // backgroundColor: 'red',
     },
     HomeButton: {
         height: 100,

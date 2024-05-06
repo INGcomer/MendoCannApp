@@ -1,8 +1,8 @@
 // React
 import React, { useContext } from 'react';
-import { View, StyleSheet, Button, TouchableHighlight, Pressable, Image } from 'react-native';
+import { View, StyleSheet, Pressable, Image } from 'react-native';
 // Kitten UI
-import { Text, Divider, Icon } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 // Context
 import { AuthContext } from '../Context/AuthContext';
 // components
@@ -12,8 +12,6 @@ import Logo from '../../assets/Logos/Logo completo.png'
 
 const EventosScreen = ({ navigation }) => {
     const { UserToken } = useContext(AuthContext)
-
-    const [value, setValue] = React.useState('');
 
     return (
         <View style={styles.pageContainer}>
@@ -25,11 +23,6 @@ const EventosScreen = ({ navigation }) => {
             </View>
 
             <HomeNow/>
-
-            {/* <View style={styles.HomeButtonNow} >
-                <Icon name='clock' style={styles.icons} />
-                <Text style={styles.HomeButtonText}>kk</Text>
-            </View> */}
 
             <Pressable
                 onPress={() => navigation.navigate('Cronograma')}
@@ -111,7 +104,6 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         flex: 1,
         backgroundColor: '#C0EA6A',
-        // padding: '5%',
         paddingBottom: "15%",
         gap: 25
     },
@@ -163,18 +155,12 @@ const styles = StyleSheet.create({
     fotoContainer: {
         height: 50,
         width: 325,
-        // borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'black',
     },
     foto: {
         height: 350,
         width: 350,
-        // borderRadius: 30,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: 'black',
     }
 });
 

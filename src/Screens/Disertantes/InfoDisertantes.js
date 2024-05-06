@@ -9,9 +9,6 @@ const InfoDisertantesScreen = ({ route, navigation }) => {
     const { nombre, Data } = route.params;
     return (
         <ScrollView style={styles.pageContainer} contentContainerStyle={styles.contentContainerStyle}>
-            {/* <View style={styles.nombre}>
-                <Text category='h1' style={styles.nombre}> {Data.nombre} </Text>
-            </View> */}
 
             <View style={styles.fotoContainer}>
                 <Image
@@ -89,7 +86,6 @@ const InfoDisertantesScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
     pageContainer: {
-        // alignItems: 'center',
         flexDirection: 'colum',
         flex: 1,
         padding: 20,
@@ -99,7 +95,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     pageContainer: {
-        // alignItems: 'center',
         flexDirection: 'colum',
         flex: 1,
         padding: 20,

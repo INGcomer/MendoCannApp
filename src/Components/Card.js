@@ -42,7 +42,6 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
     card: {
-        // width: '90%',
         height: '90%',
         margin: '5%',
         borderRadius: 10,
@@ -53,15 +52,12 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.36,
         shadowRadius: 6.68,
-
         elevation: 11,
-
         overflow: 'hidden'
     },
     User: {
         height: 'fit-content',
         width: '100%',
-        // backgroundColor: '#101426',
         backgroundColor: '#ffffff',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -104,10 +100,7 @@ const styles = StyleSheet.create({
     },
     empresa: {
         height: '100%',
-        // backgroundColor: '#8F9BB3',
         backgroundColor: '#ffffff',
         padding: '5%'
     },
 });
-
-// export default Card;

@@ -1,8 +1,6 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Pressable, Image, FlatList } from 'react-native';
-// Kitten UI
-import { Text, Divider, Icon } from '@ui-kitten/components';
+import { View, StyleSheet, FlatList } from 'react-native';
 // Componentes
 import BotonDiamante from './BotonesExpocitores/Diamante';
 import BotonOro from './BotonesExpocitores/Oro';
@@ -49,45 +47,8 @@ const ExpocitoresScreen = ({ navigation }) => {
         SetData(nuevoOrden)
     }, [BotonMedicinal, BotonIndustria]);
 
-
-
     return (
         <View style={styles.pageContainer}>
-
-            {/* <View style={styles.controles}>
-                <Pressable
-                    onPress={() => SetBotonMedicinal(!BotonMedicinal)}
-                    style={({ pressed }) => {
-                        if (BotonMedicinal) {
-                            return ([styles.controlesBoton, styles.controlesBotonClicked])
-                        } else {
-                            return (styles.controlesBoton)
-                        }
-                    }}
-                >
-                    <Text style={[styles.texto, styles.nombre]}>
-                        Medicinal
-                    </Text>
-
-                </Pressable>
-                <Pressable
-                    onPress={() => SetBotonIndustria(!BotonIndustria)}
-                    style={({ pressed }) => {
-                        if (BotonIndustria) {
-                            return ([styles.controlesBoton, styles.controlesBotonClicked])
-                        } else {
-                            return (styles.controlesBoton)
-                        }
-                    }}
-                >
-                    <Text style={[styles.texto, styles.nombre]}>
-                        Industria
-                    </Text>
-
-                </Pressable>
-            </View> */}
-
-
             <FlatList
                 style={styles.lista}
                 data={Data}
@@ -103,8 +64,6 @@ const ExpocitoresScreen = ({ navigation }) => {
                     }
             }}
             />
-
-
         </View>
     )
 }
@@ -116,7 +75,6 @@ const styles = StyleSheet.create({
         flexDirection: 'colum',
         flexWrap: "wrap",
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
     },
     controles: {
@@ -151,7 +109,6 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     texto: {
-        // color: '#2A3330',
         color: 'black',
     },
     nombre: {

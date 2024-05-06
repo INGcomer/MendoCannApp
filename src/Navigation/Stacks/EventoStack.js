@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
 // pantallas
-import EventoScreen from '../../Screens/Evento';
 import TinderScreen from '../../Screens/B2B/Tinder';
 import ListaScreen from '../../Screens/B2B/Lista';
 import MatchesScreen from '../../Screens/B2B/Matches';

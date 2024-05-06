@@ -1,7 +1,5 @@
 import { getHeaderTitle } from '@react-navigation/elements';
 
-// ..
-
 header: ({ navigation, route, options, back }) => {
   const title = getHeaderTitle(options, route.name);
 

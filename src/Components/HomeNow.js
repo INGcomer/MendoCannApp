@@ -8,8 +8,6 @@ import { Text, Icon } from '@ui-kitten/components';
 // Data
 import Data from '../../assets/data/Cronograma'
 
-
-
 export default function HomeNow() {
     const DateNow = moment();
 
@@ -96,7 +94,6 @@ const styles = StyleSheet.create({
         height: 150,
         width: 325,
         borderRadius: 30,
-        // justifyContent: 'flex-start',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
@@ -111,7 +108,6 @@ const styles = StyleSheet.create({
     },
     Textos: {
         width: '100%',
-        // justifyContent: 'flex-start',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,

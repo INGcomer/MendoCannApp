@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Pressable, Image, FlatList } from 'react-native';
 // Kitten UI
-import { Text, Divider, Icon } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 // data
 import info from '../../../assets/data/Disertantes/Disertantes'
 
@@ -114,12 +114,6 @@ const BotonDisertante = (({ data, navigation }) => {
                         {data.esenario}
                     </Text>
                 </Text>
-                {/* <Text style={[styles.texto, styles.conferencia]}>
-                    Conferencia:
-                </Text>
-                <Text style={[styles.texto, styles.titulo]}>
-                    {data.Conferencias}
-                </Text> */}
             </View>
         </Pressable>
     )
@@ -132,7 +126,6 @@ const styles = StyleSheet.create({
         flexDirection: 'colum',
         flexWrap: "wrap",
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
     },
     controles: {
@@ -207,7 +200,6 @@ const styles = StyleSheet.create({
         width: "auto"
     },
     texto: {
-        // color: '#2A3330',
         color: 'black',
     },
     nombre: {
@@ -215,7 +207,6 @@ const styles = StyleSheet.create({
         fontWeight: 800
     },
     conferencia: {
-        // fontSize: 30,
         fontWeight: 800
     },
     icons: {

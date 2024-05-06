@@ -99,8 +99,6 @@ const BotonDiamante = (({ data, navigation }) => {
                 :
                 null}
 
-
-
         </Pressable >
     )
 })
@@ -119,7 +117,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginHorizontal: 20,
         borderRadius: 30,
-        // flexDirection: 'row',
         flexDirection: 'colum',
         justifyContent: 'center',
         alignItems: 'center',
@@ -138,7 +135,6 @@ const styles = StyleSheet.create({
     },
     SponsorDiamante: {
         marginTop: 60,
-        // height: 300,
         height: 'auto',
         paddingTop: 20,
         borderWidth: 5,
@@ -176,7 +172,6 @@ const styles = StyleSheet.create({
         width: "auto"
     },
     texto: {
-        // color: '#2A3330',
         color: 'black',
     },
     nombre: {
@@ -189,7 +184,6 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     conferencia: {
-        // fontSize: 30,
         fontWeight: 800
     },
     icons: {
