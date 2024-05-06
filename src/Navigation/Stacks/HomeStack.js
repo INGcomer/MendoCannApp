@@ -6,6 +6,7 @@ import EventoStack from './EventoStack';
 import EventosScreen from '../../Screens/Home';
 import LogInScreen from '../../Screens/LogIn';
 import PerfilScreen from '../../Screens/B2B/Perfil';
+import Sponsors from '../../Screens/Sponsors';
 
 import DisertantesScreen from '../../Screens/Disertantes/Disertantes';
 import InfoDisertantesScreen from '../../Screens/Disertantes/InfoDisertantes';
@@ -51,7 +52,7 @@ export default function HomeStack() {
       />
 
 
-      <Stack.Screen name="Sponsors" component={PerfilScreen} />
+      <Stack.Screen name="Sponsors" component={Sponsors} />
 
       <Stack.Screen name="B2B" component={EventoStack} />
     </Stack.Navigator>
