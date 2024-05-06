@@ -1,6 +1,6 @@
 // React
 import { useEffect, useContext, useState } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, Image } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // functions
 import BackEndUrl from '../../funciones/BackEndUrl';
@@ -185,6 +185,21 @@ const TinderScreen = () => {
                 :
                 null
             }
+
+            <Image
+                style={styles.img1}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../../assets/chala.png')}
+            />
+
+
         </View>
     );
 };
@@ -199,7 +214,8 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 1,
     },
     LoadingText: {
         fontSize: 50,
@@ -212,6 +228,36 @@ const styles = StyleSheet.create({
         backgroundColor: '#0000006e',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{rotate: '-10deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        // top: 200,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
     }
 });
 

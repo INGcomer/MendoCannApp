@@ -81,6 +81,19 @@ const DataUsuario = ({ data, Logout, navigation }) => {
  
             </Pressable>
 
+            <Image
+                style={styles.img1}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../../assets/chala.png')}
+            />
+
 
         </>
     )
@@ -95,23 +108,27 @@ const styles = StyleSheet.create({
     },
     nombre: {
         marginTop: 25,
-        color: 'black'
+        color: 'black',
+        zIndex: 1,
     },
     CerrarCecion: {
-        color: 'black'
+        color: 'black',
+        zIndex: 1,
     },
     descripcion: {
         width: "90%",
         marginTop: 25,
         color: 'black',
-        textAlign: 'center'
+        textAlign: 'center',
+        zIndex: 1,
     },
     fotoContainer: {
         height: 200,
         width: 200,
         backgroundColor: "#2A3330",
         borderRadius: 100,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        zIndex: 1,
     },
     foto: {
         height: '100%',
@@ -155,7 +172,8 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 1,
     },
     LoadingText: {
         fontSize: 50,
@@ -177,11 +195,42 @@ const styles = StyleSheet.create({
         shadowRadius: 11.27,
         elevation: 20,
         position: 'absolute',
-        bottom: 50
+        bottom: 50,
+        zIndex: 1,
     },
     HomeButton2: {
         elevation: 2
     },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{rotate: '-10deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        // top: 200,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    }
 });
 
 

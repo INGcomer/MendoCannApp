@@ -22,7 +22,7 @@ const EventosScreen = ({ navigation }) => {
                 />
             </View>
 
-            <HomeNow/>
+            <HomeNow />
 
             <Pressable
                 onPress={() => navigation.navigate('Cronograma')}
@@ -91,6 +91,18 @@ const EventosScreen = ({ navigation }) => {
                 <Text style={styles.HomeButtonText}>B2B</Text>
             </Pressable>
 
+            <Image
+                style={styles.img1}
+                source={require('../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../assets/chala.png')}
+            />
         </View>
     )
 }
@@ -105,7 +117,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#C0EA6A',
         paddingBottom: "15%",
-        gap: 25
+        gap: 25,
     },
     HomeButton: {
         height: 150,
@@ -121,7 +133,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 11.27,
-        elevation: 20
+        elevation: 20,
+        zIndex: 1
     },
     HomeButton2: {
         height: 150,
@@ -137,7 +150,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 11.27,
-        elevation: 2
+        elevation: 2,
+        zIndex: 1
     },
     HomeButtonText: {
         color: '#2A3330',
@@ -161,6 +175,37 @@ const styles = StyleSheet.create({
     foto: {
         height: 350,
         width: 350,
+        zIndex: 1
+    },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{rotate: '-10deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        // top: 200,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
     }
 });
 

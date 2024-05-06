@@ -1,6 +1,6 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Image } from 'react-native';
 // Componentes
 import BotonDiamante from './BotonesExpocitores/Diamante';
 import BotonOro from './BotonesExpocitores/Oro';
@@ -54,15 +54,28 @@ const ExpocitoresScreen = ({ navigation }) => {
                 data={Data}
                 renderItem={({ item }) => {
                     if (item.stand == 'Diamante') {
-                       return(<BotonDiamante data={item} navigation={navigation} />  )  
+                        return (<BotonDiamante data={item} navigation={navigation} />)
                     }
                     if (item.stand == 'Oro') {
-                        return(<BotonOro data={item} navigation={navigation} />  )  
+                        return (<BotonOro data={item} navigation={navigation} />)
                     }
                     if (item.stand == 'Plata') {
-                        return(<BotonPlata data={item} navigation={navigation} />  )  
+                        return (<BotonPlata data={item} navigation={navigation} />)
                     }
-            }}
+                }}
+            />
+
+            <Image
+                style={styles.img1}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../../assets/chala.png')}
             />
         </View>
     )
@@ -107,6 +120,7 @@ const styles = StyleSheet.create({
     },
     lista: {
         width: '100%',
+        zIndex: 1,
     },
     texto: {
         color: 'black',
@@ -115,6 +129,36 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 800
     },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{ rotate: '-10deg' }],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: -40,
+        right: 200,
+        transform: [{ rotate: '45deg' }],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{ rotate: '45deg' }],
+        zIndex: 0,
+        opacity: 0.2
+    }
 });
 
 

@@ -129,6 +129,19 @@ const ListaScreen = ({ navigation }) => {
                 </View>
             }
 
+            <Image
+                style={styles.img1}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../../assets/chala.png')}
+            />
+
 
         </View>
     )
@@ -197,6 +210,7 @@ const styles = StyleSheet.create({
     },
     lista: {
         width: '100%',
+        zIndex: 1,
     },
     Disertante: {
         width: '90%',
@@ -217,7 +231,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 11.27,
-        elevation: 20
+        elevation: 20,
     },
     DisertanteLike: {
         borderColor: '#B3E41D',
@@ -324,12 +338,43 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 1,
     },
     LoadingText: {
         fontSize: 50,
         fontWeight: 700
     },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{rotate: '-10deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        right: 200,
+        top: -20,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    }
 });
 
 export default ListaScreen;

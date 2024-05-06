@@ -1,6 +1,6 @@
 // React
 import { useEffect, useContext, useState } from 'react';
-import { View, StyleSheet, Alert, FlatList } from 'react-native';
+import { View, StyleSheet, Alert, FlatList, Image } from 'react-native';
 import { Text } from '@ui-kitten/components';
 // function
 import BackEndUrl from '../../funciones/BackEndUrl';
@@ -57,6 +57,19 @@ const MatchesScreen = () => {
                 </View>
             }
 
+            <Image
+                style={styles.img1}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../../assets/chala.png')}
+            />
+
 
         </View>
     )
@@ -96,7 +109,6 @@ const styles = StyleSheet.create({
         flexDirection: 'colum',
         flexWrap: "wrap",
         flex: 1,
-        // backgroundColor: '#FFFFFF',
         backgroundColor: '#C0EA6A',
     },
     controles: {
@@ -137,7 +149,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         borderRadius: 30,
         flexDirection: 'colum',
-        // justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
         shadowColor: "#2A3330",
@@ -148,7 +159,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.23,
         shadowRadius: 11.27,
         elevation: 20,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        zIndex: 1,
     },
     DisertanteClicked: {
         elevation: 2
@@ -211,13 +223,44 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 1,
     },
     LoadingText: {
         fontSize: 50,
         fontWeight: 700,
         textAlign: 'center'
     },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{rotate: '-10deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        right: 200,
+        top: -20,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{rotate: '45deg'}],
+        zIndex: 0,
+        opacity: 0.2
+    }
 });
 
 

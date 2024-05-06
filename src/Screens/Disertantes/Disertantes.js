@@ -75,8 +75,21 @@ const DisertantesScreen = ({ navigation }) => {
                 renderItem={({ item }) => <BotonDisertante data={item} navigation={navigation} />}
             />
 
+            <Image
+                style={styles.img1}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img2}
+                source={require('../../../assets/chala.png')}
+            />
+            <Image
+                style={styles.img3}
+                source={require('../../../assets/chala.png')}
+            />
 
-        </View>
+
+        </View >
     )
 }
 
@@ -131,7 +144,8 @@ const styles = StyleSheet.create({
     controles: {
         width: "90%",
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        zIndex: 1,
     },
     controlesBoton: {
         height: 50,
@@ -158,6 +172,7 @@ const styles = StyleSheet.create({
     },
     lista: {
         width: '100%',
+        zIndex: 1,
     },
     Disertante: {
         height: 150,
@@ -213,6 +228,36 @@ const styles = StyleSheet.create({
         height: 60,
         width: 60,
         tintColor: "#2A3330",
+    },
+    img1: {
+        height: 600,
+        width: 600,
+        position: 'absolute',
+        top: 160,
+        left: 60,
+        transform: [{ rotate: '-10deg' }],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img2: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: -40,
+        right: 200,
+        transform: [{ rotate: '45deg' }],
+        zIndex: 0,
+        opacity: 0.2
+    },
+    img3: {
+        height: 300,
+        width: 300,
+        position: 'absolute',
+        top: 650,
+        right: 200,
+        transform: [{ rotate: '45deg' }],
+        zIndex: 0,
+        opacity: 0.2
     }
 });
 

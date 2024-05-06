@@ -105,7 +105,7 @@ const AnimatedStack = props => {
     }, [currentIndex, translateX]);
 
     return (
-        <GestureHandlerRootView>
+        <GestureHandlerRootView style={{zIndex: 20}}>
             <View style={styles.root}>
                 {nextProfile && (
                     <View style={styles.nextCardContainer}>
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         height: 200,
         position: 'absolute',
         top: 100,
-        zIndex: 1,
+        zIndex: 2,
     },
     Botones: {
         height: 100,
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 11.27,
-        elevation: 20
+        elevation: 20,
     },
     HomeButton2: {
         elevation: 2
