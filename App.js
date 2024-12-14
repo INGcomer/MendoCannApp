@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
 // Kitten UI
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
