@@ -163,13 +163,15 @@ const styles = StyleSheet.create({
     lista: {
         width: '100%',
         zIndex: 1,
+        // overflow: 'visible',
     },
     Disertante: {
-        height: 250,
+        height: 'auto',
         width: '90%',
         marginTop: 10,
         marginBottom: 10,
         marginHorizontal: 20,
+        paddingBottom: 15,
         borderRadius: 30,
         flexDirection: 'colum',
         alignItems: 'center',
@@ -197,7 +199,8 @@ const styles = StyleSheet.create({
     },
     horario: {
         width: "100%",
-        height: 25,
+        height: 30,
+        paddingTop: 5,
         backgroundColor: '#2A3330',
         justifyContent: 'center',
         alignItems: 'center',
@@ -220,7 +223,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 800,
         textAlign: "center",
-        marginTop: 15
+        marginTop: 15,
     },
     descripcion: {
         textAlign: "center",

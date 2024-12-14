@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     nombre: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 800
     },
     conferencia: {
