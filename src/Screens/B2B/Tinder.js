@@ -56,7 +56,7 @@ const TinderScreen = () => {
                 // Reviso si el usuario ha dado Likes
                 if (userData.likes.length > 0) {
                     // si el perfil actual esta entre los likes del usuario, elimino el perfil
-                    if (userData.likes.includes(response.data[index].codigo)) {
+                    if (userData.likes.includes(response.data[index].codigo.toString())) {
                         // response.data.splice(index, 1);
                         response.data[index] = null
 
@@ -67,7 +67,7 @@ const TinderScreen = () => {
                 // Reviso si el usuario ha dado DisLikes
                 if (userData.dislikes.length > 0) {
                     // si el perfil actual esta entre los Dislikes del usuario, elimino el perfil
-                    if (userData.dislikes.includes(response.data[index].codigo)) {
+                    if (userData.dislikes.includes(response.data[index].codigo.toString())) {
                         // response.data.splice(index, 1);
                         response.data[index] = null
 

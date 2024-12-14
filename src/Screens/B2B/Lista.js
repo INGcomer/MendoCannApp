@@ -39,6 +39,8 @@ const ListaScreen = ({ navigation }) => {
                 }
             }
 
+            // console.log(response.data.length)
+
             for (let index = 0; index < response.data.length; index++) {
                 // busco y elimino el perfil de "DEV"
                 if (response.data[index].codigo == 'DEV') {
@@ -51,8 +53,9 @@ const ListaScreen = ({ navigation }) => {
                 // Reviso si el usuario ha dado Likes
                 if (userData.likes.length > 0) {
                     // si el perfil actual esta entre los likes del usuario, elimino el perfil
-                    if (userData.likes.includes(response.data[index].codigo)) {
+                    if (userData.likes.includes(response.data[index].codigo.toString())) {
                         response.data[index].like = true
+                        console.log(likes)
                         likes.push(response.data[index])
                         response.data[index] = null
 
@@ -63,7 +66,7 @@ const ListaScreen = ({ navigation }) => {
                 // Reviso si el usuario ha dado DisLikes
                 if (userData.dislikes.length > 0) {
                     // si el perfil actual esta entre los Dislikes del usuario, elimino el perfil
-                    if (userData.dislikes.includes(response.data[index].codigo)) {
+                    if (userData.dislikes.includes(response.data[index].codigo.toString())) {
                         response.data[index].like = false
                         Dislikes.push(response.data[index])
                         response.data[index] = null
@@ -109,6 +112,9 @@ const ListaScreen = ({ navigation }) => {
             const sinValorar_Likes_Dislikes = sinValorar_Likes.concat(Dislikes)
 
             SetAllUsersDataLocal(sinValorar_Likes_Dislikes)
+
+            // console.log(likes)
+            // console.log(Dislikes)
 
         }).catch(function (error) {
             console.log(error);
