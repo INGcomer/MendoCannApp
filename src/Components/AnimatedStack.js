@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     root: {
         justifyContent: 'space-around',
         alignItems: 'center',
-        height: '85%',
+        height: '80%',
         margin: 0,
     },
     animatedCard: {

@@ -43,7 +43,7 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
     card: {
-        height: '90%',
+        height: '80%',
         margin: '5%',
         borderRadius: 10,
         shadowColor: '#000',
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     nombreContainer: {
         width: '70%',
-        alignItems: 'center',
+        paddingLeft: 30
     },
     imageContainer: {
         width: 100,
@@ -88,11 +88,13 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: '#2A3330',
         fontWeight: 'bold',
+        // textAlign: "center"
     },
     rubro: {
         fontSize: 18,
         color: '#2A3330',
         lineHeight: 25,
+        // textAlign: 'left'
     },
     bio: {
         fontSize: 13,

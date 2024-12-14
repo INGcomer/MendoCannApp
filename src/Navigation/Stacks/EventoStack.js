@@ -51,5 +51,10 @@ export default function EventoStack() {
 const styles = StyleSheet.create({
     navigation: {
         backgroundColor: '#FFFFFF',
+        paddingBottom: 30,
+    },
+    icon: {
+        height: 25,
+        width:25
     }
 })
