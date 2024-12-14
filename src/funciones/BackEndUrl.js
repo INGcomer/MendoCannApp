@@ -4,6 +4,6 @@ export default function BackEndUrl(url) {
     if (Produccion) {
         return `https://sisabackend.herokuapp.com/${url}`
     } else {
-        return `http://192.168.0.14:3000/${url}`
+        return `http://192.168.100.7:3000/${url}`
     }
 }

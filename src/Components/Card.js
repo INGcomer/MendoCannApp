@@ -1,12 +1,13 @@
 import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 import { Text } from '@ui-kitten/components';
+import BackEndUrl from '../funciones/BackEndUrl';
 
 export default function Card(props) {
     const { usuario, empresa } = props.user;
 
-    const foto = `http://192.168.0.14:3000/imgs/MatchAle/${usuario.foto}.png`
-    const logo = `http://192.168.0.14:3000/imgs/MatchAle/${empresa.logo}.png`
+    const foto = BackEndUrl(`imgs/MatchAle/${usuario.foto}.png`)
+    const logo = BackEndUrl(`imgs/MatchAle/${empresa.logo}.png`)
 
     return (
         <View style={styles.card}>
