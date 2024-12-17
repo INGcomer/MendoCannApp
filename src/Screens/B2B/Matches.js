@@ -76,7 +76,7 @@ const MatchesScreen = () => {
 }
 
 const BotonDisertante = (({ data }) => {
-    let horarioFin = data.horario.split(':')
+    let horarioFin = data.horario.horario.split(':')
 
     horarioFin = horarioFin[0] + ':' + (parseInt(horarioFin[1]) + 15)
     console.log(horarioFin)
@@ -86,7 +86,7 @@ const BotonDisertante = (({ data }) => {
 
             <Text style={styles.horario}>
                 <Text style={[styles.horarioText]}> De: </Text>
-                <Text style={[styles.horarioTextBold]}> {data.horario}  </Text>
+                <Text style={[styles.horarioTextBold]}> {data.horario.horario}  </Text>
                 <Text style={[styles.horarioText]}> A:  </Text>
                 <Text style={[styles.horarioTextBold]}> {horarioFin} </Text>
             </Text>
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
     },
     lista: {
         width: '100%',
+        zIndex: 2,
     },
     Disertante: {
         height: 180,
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
         shadowRadius: 11.27,
         elevation: 20,
         overflow: 'hidden',
-        zIndex: 1,
+        zIndex: 2,
     },
     DisertanteClicked: {
         elevation: 2

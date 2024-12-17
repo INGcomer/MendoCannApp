@@ -77,7 +77,7 @@ const DataUsuario = ({ data, Logout, navigation }) => {
                 ]}
             >
 
-                <Text style={styles.CerrarCecion}> Cerrar cecion </Text>
+                <Text style={styles.CerrarCecion}> Cerrar sesión </Text>
  
             </Pressable>
 
@@ -108,7 +108,10 @@ const styles = StyleSheet.create({
     },
     nombre: {
         marginTop: 25,
+        paddingLeft: 30,
+        paddingRight: 30,
         color: 'black',
+        textAlign: "center",
         zIndex: 1,
     },
     CerrarCecion: {
@@ -125,6 +128,7 @@ const styles = StyleSheet.create({
     fotoContainer: {
         height: 200,
         width: 200,
+        marginTop: 30,
         backgroundColor: "#2A3330",
         borderRadius: 100,
         overflow: 'hidden',
